@@ -641,6 +641,22 @@ footer {
   color: var(--slate-600);
 }
 
+.pp-tabs {
+  display: flex; gap: 4px; margin-bottom: 0.8rem;
+  background: var(--slate-100); border-radius: var(--radius-md);
+  padding: 3px;
+}
+.pp-tab {
+  flex: 1; padding: 7px 10px; border: none; border-radius: 9px;
+  font-size: 12px; font-weight: 600; font-family: inherit;
+  cursor: pointer; color: var(--slate-400); background: transparent;
+  transition: background 0.15s, color 0.15s;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.pp-tab:hover { color: var(--slate-700); }
+.pp-tab.active { background: var(--white); color: var(--slate-900); box-shadow: 0 1px 4px rgba(15,23,42,0.08); }
+.pp-tab .pp-count { font-size: 10px; }
+
 .pp-disconnect {
   margin: auto 1.5rem 1.5rem;
   background: transparent; border: 1px solid var(--slate-200);
