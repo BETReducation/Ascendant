@@ -388,37 +388,50 @@ function cborDecodeLovelace(hex) {
 /* ── NFTs via Blockfrost ── */
 
 async function loadNftsBlockfrost() {
-  // Convert hex address to bech32 using Blockfrost addresses endpoint
-  const addrInfo = await blockfrostFetch(`/addresses/${connectedAddr}`);
-  const assets   = await blockfrostFetch(`/addresses/${connectedAddr}/utxos`);
+  const ASC_POLICY = 'ascendant_policy_placeholder';
 
-  const allNfts = [];
-  // Collect unique policy+asset combos
-  const seen = new Set();
-  for (const utxo of assets) {
-    for (const amt of utxo.amount) {
-      if (amt.unit === 'lovelace') continue;
-      if (seen.has(amt.unit)) continue;
-      seen.add(amt.unit);
-      allNfts.push(amt.unit);
+  // Prefer stake address — covers all wallet addresses, not just one change address
+  let assetUnits = [];
+  let fetchedViaStake = false;
+
+  try {
+    const rewardAddrsHex = await connectedApi.getRewardAddresses();
+    if (rewardAddrsHex && rewardAddrsHex.length > 0) {
+      const stakeAddr = cborHexToAddress(rewardAddrsHex[0]);
+      const acctInfo  = await blockfrostFetch(`/accounts/${stakeAddr}`);
+      // Fetch all assets across all addresses linked to this stake key
+      let page = 1;
+      while (true) {
+        const batch = await blockfrostFetch(`/accounts/${stakeAddr}/addresses/assets?page=${page}&count=100`);
+        if (!batch.length) break;
+        batch.forEach(a => { if (a.unit !== 'lovelace') assetUnits.push(a.unit); });
+        if (batch.length < 100) break;
+        page++;
+      }
+      fetchedViaStake = true;
     }
+  } catch (e) {
+    // stake address unavailable — fall through to direct address query
   }
 
-  document.getElementById('allNftCount').textContent = allNfts.length;
+  // Fallback: query the change address directly
+  if (!fetchedViaStake) {
+    const addrInfo = await blockfrostFetch(`/addresses/${connectedAddr}`);
+    assetUnits = (addrInfo.amount || [])
+      .filter(a => a.unit !== 'lovelace')
+      .map(a => a.unit);
+  }
 
-  // Fetch metadata for first 12
+  document.getElementById('allNftCount').textContent = assetUnits.length;
+
+  // Fetch metadata for first 12 (parallel)
   const meta = await Promise.allSettled(
-    allNfts.slice(0, 12).map(unit => blockfrostFetch(`/assets/${unit}`))
+    assetUnits.slice(0, 12).map(unit => blockfrostFetch(`/assets/${unit}`))
   );
-
-  const resolved = meta
-    .filter(r => r.status === 'fulfilled')
-    .map(r => r.value);
+  const resolved = meta.filter(r => r.status === 'fulfilled').map(r => r.value);
 
   renderNftGrid('allNftGrid', resolved);
 
-  // Ascendant NFTs: filter by our policy (placeholder policy)
-  const ASC_POLICY = 'ascendant_policy_placeholder';
   const ascNfts = resolved.filter(a => a.policy_id === ASC_POLICY);
   document.getElementById('ascNftCount').textContent = ascNfts.length;
   renderNftGrid('ascNftGrid', ascNfts, true);
