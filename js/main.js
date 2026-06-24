@@ -1,7 +1,7 @@
 /* ═══ WALLET CONNECTION ═══ */
 
 // Blockfrost mainnet — swap to testnet key + endpoint for testing
-const BLOCKFROST_PROJECT_ID = 'mainnetYOUR_KEY_HERE';
+const BLOCKFROST_PROJECT_ID = 'mainnetRp7S5cPwjwv9zZ1deyHQiXUuQAcLmUWg';
 const BLOCKFROST_BASE       = 'https://cardano-mainnet.blockfrost.io/api/v0';
 
 // Known wallets (CIP-30 window key, display name, emoji fallback)
@@ -100,20 +100,83 @@ function buildWalletList() {
   }
 }
 
+/* ── bech32 encode (for converting raw address bytes → addr1...) ── */
+
+const BECH32_CHARSET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l';
+
+function bech32Polymod(values) {
+  const GEN = [0x3b6a57b2, 0x26508e6d, 0x1ea119fa, 0x3d4233dd, 0x2a1462b3];
+  let chk = 1;
+  for (const v of values) {
+    const b = chk >> 25;
+    chk = ((chk & 0x1ffffff) << 5) ^ v;
+    for (let i = 0; i < 5; i++) if ((b >> i) & 1) chk ^= GEN[i];
+  }
+  return chk;
+}
+
+function bech32HrpExpand(hrp) {
+  const ret = [];
+  for (let i = 0; i < hrp.length; i++) ret.push(hrp.charCodeAt(i) >> 5);
+  ret.push(0);
+  for (let i = 0; i < hrp.length; i++) ret.push(hrp.charCodeAt(i) & 31);
+  return ret;
+}
+
+function bech32Encode(hrp, data) {
+  const combined = [...data, 0, 0, 0, 0, 0, 0];
+  const checksum = bech32Polymod([...bech32HrpExpand(hrp), ...combined]) ^ 1;
+  const chars = [...data];
+  for (let i = 0; i < 6; i++) chars.push((checksum >> (5 * (5 - i))) & 31);
+  return hrp + '1' + chars.map(d => BECH32_CHARSET[d]).join('');
+}
+
+function convertBits(data, fromBits, toBits, pad = true) {
+  let acc = 0, bits = 0;
+  const result = [];
+  const maxv = (1 << toBits) - 1;
+  for (const value of data) {
+    acc = (acc << fromBits) | value;
+    bits += fromBits;
+    while (bits >= toBits) { bits -= toBits; result.push((acc >> bits) & maxv); }
+  }
+  if (pad && bits > 0) result.push((acc << (toBits - bits)) & maxv);
+  return result;
+}
+
+function hexToBytes(hex) {
+  return hex.match(/.{1,2}/g).map(b => parseInt(b, 16));
+}
+
+// CIP-30 returns CBOR-encoded address hex; decode to bech32 addr1...
+function cborHexToAddress(hex) {
+  const bytes = hexToBytes(hex);
+  // CBOR bytes tag: if first byte is 0x40-0x57 it's a byte string of length (b & 0x1f)
+  // if 0x58 the next byte is the length; strip the CBOR envelope
+  let addrBytes;
+  if (bytes[0] === 0x58) {
+    addrBytes = bytes.slice(2);          // 0x58 <len> <addr bytes...>
+  } else if ((bytes[0] & 0xe0) === 0x40) {
+    addrBytes = bytes.slice(1);          // short bstr
+  } else {
+    addrBytes = bytes;                   // already raw (some wallets skip CBOR)
+  }
+  const hrp = (addrBytes[0] & 0xf0) === 0xe0 ? 'stake' : 'addr';
+  const data5bit = convertBits(addrBytes, 8, 5);
+  return bech32Encode(hrp, data5bit);
+}
+
 /* ── connect ── */
 
 async function connectWallet(key) {
   closeWalletModal();
   try {
     const walletHandle = window.cardano[key];
-    connectedApi  = await walletHandle.enable();
-    const addrHex = (await connectedApi.getUsedAddresses())[0]
-                 ?? (await connectedApi.getUnusedAddresses())[0];
+    connectedApi = await walletHandle.enable();
 
-    // Decode bech32 address — use wallet's own changeAddress as fallback display
+    // Get change address as CBOR hex and convert to bech32 for Blockfrost
     const changeAddrHex = await connectedApi.getChangeAddress();
-    // Store hex; display truncated
-    connectedAddr = changeAddrHex;
+    connectedAddr = cborHexToAddress(changeAddrHex);
 
     connectBtn.textContent = shortAddr(connectedAddr);
     connectBtn.classList.add('connected');
