@@ -227,6 +227,103 @@ ppDisconnect.addEventListener('click', () => {
   document.getElementById('ppTier').textContent = 'Seeker';
 });
 
+/* ── ADA Handle lookup ── */
+
+let adaHandles    = [];  // all handles found in wallet
+let activeHandle  = null; // currently displayed handle (null = show address)
+
+function hexToAscii(hex) {
+  let str = '';
+  for (let i = 0; i < hex.length; i += 2) {
+    str += String.fromCharCode(parseInt(hex.slice(i, i + 2), 16));
+  }
+  return str;
+}
+
+async function loadAdaHandle() {
+  if (BLOCKFROST_PROJECT_ID.includes('YOUR_KEY')) return;
+  try {
+    const info = await blockfrostFetch(`/addresses/${connectedAddr}`);
+    adaHandles = (info.amount || [])
+      .filter(a => a.unit.startsWith(ADA_HANDLE_POLICY) && a.unit.length > 56)
+      .map(a => '$' + hexToAscii(a.unit.slice(56)));
+
+    if (adaHandles.length > 0) {
+      activeHandle = adaHandles[0];
+      renderHandleUI();
+    }
+  } catch (e) {
+    // no handles or fetch failed — stay with address
+  }
+}
+
+function renderHandleUI() {
+  const addrEl  = document.getElementById('ppAddress');
+  const nameRow = document.getElementById('ppNameRow');
+
+  if (activeHandle) {
+    addrEl.textContent = activeHandle;
+    addrEl.style.fontFamily = 'inherit';
+    addrEl.style.fontSize   = '15px';
+    addrEl.style.fontWeight = '700';
+    addrEl.style.color      = 'var(--blue-600)';
+    connectBtn.textContent  = activeHandle;
+  } else {
+    addrEl.textContent = shortAddr(connectedAddr);
+    addrEl.style.fontFamily = "'Courier New', monospace";
+    addrEl.style.fontSize   = '13px';
+    addrEl.style.fontWeight = '600';
+    addrEl.style.color      = 'var(--slate-900)';
+    connectBtn.textContent  = shortAddr(connectedAddr);
+  }
+
+  // Build the toggle row (only once)
+  if (!nameRow) {
+    const row = document.createElement('div');
+    row.id = 'ppNameRow';
+    row.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;';
+
+    // Handle pill(s)
+    adaHandles.forEach(handle => {
+      const pill = document.createElement('button');
+      pill.className  = 'handle-pill' + (handle === activeHandle ? ' active' : '');
+      pill.textContent = handle;
+      pill.title = 'Use as display name';
+      pill.addEventListener('click', () => {
+        activeHandle = handle;
+        renderHandleUI();
+        document.querySelectorAll('.handle-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        document.querySelector('.addr-pill')?.classList.remove('active');
+      });
+      row.appendChild(pill);
+    });
+
+    // Address pill
+    const addrPill = document.createElement('button');
+    addrPill.className   = 'addr-pill handle-pill' + (activeHandle ? '' : ' active');
+    addrPill.textContent = shortAddr(connectedAddr);
+    addrPill.title = 'Show wallet address';
+    addrPill.addEventListener('click', () => {
+      activeHandle = null;
+      renderHandleUI();
+      document.querySelectorAll('.handle-pill').forEach(p => p.classList.remove('active'));
+      addrPill.classList.add('active');
+    });
+    row.appendChild(addrPill);
+
+    // Insert below the address line
+    document.getElementById('ppAddress').insertAdjacentElement('afterend', row);
+  } else {
+    // Update active states on existing pills
+    nameRow.querySelectorAll('.handle-pill:not(.addr-pill)').forEach(p => {
+      p.classList.toggle('active', p.textContent === activeHandle);
+    });
+    const addrPill = nameRow.querySelector('.addr-pill');
+    if (addrPill) addrPill.classList.toggle('active', !activeHandle);
+  }
+}
+
 /* ── load data ── */
 
 async function loadProfileData() {
