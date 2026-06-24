@@ -178,6 +178,8 @@ async function connectWallet(key) {
     const changeAddrHex = await connectedApi.getChangeAddress();
     connectedAddr = cborHexToAddress(changeAddrHex);
 
+    localStorage.setItem('asc_wallet', key);
+
     connectBtn.textContent = shortAddr(connectedAddr);
     connectBtn.classList.add('connected');
     connectBtn.onclick = openProfilePanel;
@@ -185,6 +187,7 @@ async function connectWallet(key) {
     openProfilePanel();
   } catch (err) {
     console.error('Wallet connect failed:', err);
+    localStorage.removeItem('asc_wallet');
   }
 }
 
