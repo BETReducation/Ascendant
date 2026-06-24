@@ -483,38 +483,39 @@ function renderNftGrid(gridId, nfts, isAscendant = false) {
 
 /* ── Price fetching ── */
 
-async function fetchAdaUsd() {
+async function fetchCardanoTokenPrices() {
+  // CoinGecko free endpoint — returns top ~100 Cardano ecosystem tokens with USD prices
+  // Keyed by ticker symbol (lowercase) for fuzzy matching
   try {
-    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd');
-    const data = await res.json();
-    return data?.cardano?.usd || 0;
-  } catch { return 0; }
-}
-
-async function fetchTokenPrices(units) {
-  if (TAPTOOLS_API_KEY.includes('YOUR_TAPTOOLS')) return {};
-  try {
-    const res = await fetch('https://openapi.taptools.io/api/v1/token/prices', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', 'x-api-key': TAPTOOLS_API_KEY },
-      body: JSON.stringify({ units })
-    });
-    return await res.json(); // { unit: { price: adaAmount } }
+    const res = await fetch(
+      `${COINGECKO_BASE}/coins/markets?vs_currency=usd&category=cardano-ecosystem&order=market_cap_desc&per_page=100&page=1`
+    );
+    const list = await res.json();
+    // Build lookup: symbol → price, and also id → price
+    const bySymbol = {};
+    for (const coin of list) {
+      if (coin.current_price > 0) {
+        bySymbol[coin.symbol.toLowerCase()] = coin.current_price;
+      }
+    }
+    return bySymbol;
   } catch { return {}; }
 }
 
 async function enrichTokensWithPrices(tokens) {
-  const [adaUsd, tokenPrices] = await Promise.all([
-    fetchAdaUsd(),
-    fetchTokenPrices(tokens.map(t => t.asset))
+  const [priceMap, adaRes] = await Promise.all([
+    fetchCardanoTokenPrices(),
+    fetch(`${COINGECKO_BASE}/simple/price?ids=cardano&vs_currencies=usd`).then(r => r.json()).catch(() => ({}))
   ]);
+  const adaUsd = adaRes?.cardano?.usd || 0;
 
   return tokens.map(t => {
-    const decimals   = t.metadata?.decimals ?? 0;
-    const walletAmt  = parseInt(t.walletQty || 0) / Math.pow(10, decimals);
-    const adaPrice   = tokenPrices[t.asset]?.price || 0;
-    const usdValue   = walletAmt * adaPrice * adaUsd;
-    return { ...t, walletAmt, adaPrice, usdValue, adaUsd };
+    const decimals  = t.metadata?.decimals ?? 0;
+    const walletAmt = parseInt(t.walletQty || 0) / Math.pow(10, decimals);
+    const ticker    = (t.metadata?.ticker || t.metadata?.symbol || '').toLowerCase();
+    const usdPrice  = ticker ? (priceMap[ticker] || 0) : 0;
+    const usdValue  = walletAmt * usdPrice;
+    return { ...t, walletAmt, usdPrice, usdValue, adaUsd };
   }).sort((a, b) => b.usdValue - a.usdValue);
 }
 
