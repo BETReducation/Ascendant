@@ -423,14 +423,16 @@ async function loadNftsBlockfrost() {
     const addrInfo = await blockfrostFetch(`/addresses/${connectedAddr}`);
     assetUnits = (addrInfo.amount || [])
       .filter(a => a.unit !== 'lovelace')
-      .map(a => a.unit);
+      .map(a => ({ unit: a.unit, walletQty: a.quantity }));
   }
 
   // Fetch metadata for all assets (up to 100)
   const meta = await Promise.allSettled(
-    assetUnits.slice(0, 100).map(unit => blockfrostFetch(`/assets/${unit}`))
+    assetUnits.slice(0, 100).map(({ unit }) => blockfrostFetch(`/assets/${unit}`))
   );
-  const resolved = meta.filter(r => r.status === 'fulfilled').map(r => r.value);
+  const resolved = meta
+    .filter(r => r.status === 'fulfilled')
+    .map((r, i) => ({ ...r.value, walletQty: assetUnits[i]?.walletQty || '0' }));
 
   // True NFTs have total supply of exactly 1 — fungible tokens have quantity > 1
   const nfts   = resolved.filter(a => a.quantity === '1');
