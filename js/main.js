@@ -497,6 +497,7 @@ connectBtn.addEventListener('click', openWalletModal);
 (async () => {
   const savedKey = localStorage.getItem('asc_wallet');
   if (!savedKey) return;
+  if (localStorage.getItem('asc_disconnected')) return; // user explicitly disconnected — require manual reconnect
   // Wait briefly for wallet extensions to inject into window.cardano
   await new Promise(r => setTimeout(r, 400));
   if (!window.cardano?.[savedKey]) { localStorage.removeItem('asc_wallet'); return; }
