@@ -213,7 +213,10 @@ profileOverlay.addEventListener('click', closeProfilePanel);
 ppDisconnect.addEventListener('click', () => {
   connectedApi  = null;
   connectedAddr = null;
+  adaHandles    = [];
+  activeHandle  = null;
   localStorage.removeItem('asc_wallet');
+  document.getElementById('ppNameRow')?.remove();
   connectBtn.textContent = 'Connect Wallet';
   connectBtn.classList.remove('connected');
   connectBtn.onclick = openWalletModal;
