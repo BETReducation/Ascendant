@@ -456,13 +456,17 @@ function renderNftGrid(gridId, nfts, isAscendant = false) {
     return;
   }
   grid.innerHTML = nfts.map(nft => {
-    const name  = nft.display_name || nft.asset_name || 'NFT';
-    const img   = nft.onchain_metadata?.image;
-    const emoji = nft.emoji || '🖼️';
-    const inner = img
-      ? `<img src="${ipfsToHttp(img)}" alt="${name}" loading="lazy">`
-      : `<div class="nft-card-placeholder">${emoji}</div>`;
-    return `<div class="nft-card" title="${name}">${inner}<div class="nft-card-label">${name}</div></div>`;
+    try {
+      const name  = nft.display_name || nft.asset_name || nft.onchain_metadata?.name || 'NFT';
+      const rawImg = nft.onchain_metadata?.image ?? nft.onchain_metadata?.files?.[0]?.src ?? null;
+      const imgUrl = ipfsToHttp(rawImg);
+      const inner = imgUrl
+        ? `<img src="${imgUrl}" alt="${name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=nft-card-placeholder>🖼️</div><div class=nft-card-label>${name}</div>'">`
+        : `<div class="nft-card-placeholder">🖼️</div>`;
+      return `<div class="nft-card" title="${name}">${inner}<div class="nft-card-label">${name}</div></div>`;
+    } catch (e) {
+      return `<div class="nft-card"><div class="nft-card-placeholder">🖼️</div><div class="nft-card-label">NFT</div></div>`;
+    }
   }).join('');
 }
 
