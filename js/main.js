@@ -425,15 +425,15 @@ async function loadNftsBlockfrost() {
       .map(a => a.unit);
   }
 
-  // Fetch metadata for all assets (up to 24)
+  // Fetch metadata for all assets (up to 100)
   const meta = await Promise.allSettled(
-    assetUnits.slice(0, 24).map(unit => blockfrostFetch(`/assets/${unit}`))
+    assetUnits.slice(0, 100).map(unit => blockfrostFetch(`/assets/${unit}`))
   );
   const resolved = meta.filter(r => r.status === 'fulfilled').map(r => r.value);
 
-  // Split: NFTs have onchain_metadata (CIP-25), tokens don't
-  const nfts   = resolved.filter(a => a.onchain_metadata != null);
-  const tokens = resolved.filter(a => a.onchain_metadata == null);
+  // True NFTs have total supply of exactly 1 — fungible tokens have quantity > 1
+  const nfts   = resolved.filter(a => a.quantity === '1');
+  const tokens = resolved.filter(a => a.quantity !== '1');
 
   document.getElementById('allNftCount').textContent   = nfts.length;
   document.getElementById('allTokenCount').textContent = tokens.length;
