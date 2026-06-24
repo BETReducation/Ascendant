@@ -327,6 +327,8 @@ function renderHandleUI() {
 /* ── load data ── */
 
 async function loadProfileData() {
+  loadAdaHandle();
+
   // Balance from wallet API directly (no Blockfrost needed)
   try {
     const balanceHex = await connectedApi.getBalance();
