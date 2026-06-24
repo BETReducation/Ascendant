@@ -238,11 +238,10 @@ let adaHandles    = [];  // all handles found in wallet
 let activeHandle  = null; // currently displayed handle (null = show address)
 
 function hexToAscii(hex) {
-  let str = '';
-  for (let i = 0; i < hex.length; i += 2) {
-    str += String.fromCharCode(parseInt(hex.slice(i, i + 2), 16));
-  }
-  return str;
+  const bytes = new Uint8Array(hex.match(/.{1,2}/g).map(b => parseInt(b, 16)));
+  const str = new TextDecoder().decode(bytes);
+  // ADA Handle names are lowercase alphanumeric + hyphens/underscores/periods + @ for virtual handles
+  return str.replace(/[^\w\-.@]/g, '');
 }
 
 async function loadAdaHandle() {
