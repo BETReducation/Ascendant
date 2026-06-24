@@ -242,7 +242,7 @@ function hexToAscii(hex) {
   const bytes = new Uint8Array(hex.match(/.{1,2}/g).map(b => parseInt(b, 16)));
   const str = new TextDecoder().decode(bytes);
   // ADA Handle names are lowercase alphanumeric + hyphens/underscores/periods + @ for virtual handles
-  return str.replace(/[^\w\-.@]/g, '');
+  return str.replace(/[^\w\-.@]/g, '').replace(/^@/, '');
 }
 
 async function loadAdaHandle() {
