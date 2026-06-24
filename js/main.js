@@ -425,17 +425,23 @@ async function loadNftsBlockfrost() {
       .map(a => a.unit);
   }
 
-  document.getElementById('allNftCount').textContent = assetUnits.length;
-
-  // Fetch metadata for first 12 (parallel)
+  // Fetch metadata for all assets (up to 24)
   const meta = await Promise.allSettled(
-    assetUnits.slice(0, 12).map(unit => blockfrostFetch(`/assets/${unit}`))
+    assetUnits.slice(0, 24).map(unit => blockfrostFetch(`/assets/${unit}`))
   );
   const resolved = meta.filter(r => r.status === 'fulfilled').map(r => r.value);
 
-  renderNftGrid('allNftGrid', resolved);
+  // Split: NFTs have onchain_metadata (CIP-25), tokens don't
+  const nfts   = resolved.filter(a => a.onchain_metadata != null);
+  const tokens = resolved.filter(a => a.onchain_metadata == null);
 
-  const ascNfts = resolved.filter(a => a.policy_id === ASC_POLICY);
+  document.getElementById('allNftCount').textContent   = nfts.length;
+  document.getElementById('allTokenCount').textContent = tokens.length;
+
+  renderNftGrid('allNftGrid', nfts);
+  renderTokenList('allTokenGrid', tokens);
+
+  const ascNfts = nfts.filter(a => a.policy_id === ASC_POLICY);
   document.getElementById('ascNftCount').textContent = ascNfts.length;
   renderNftGrid('ascNftGrid', ascNfts, true);
   updateTier(ascNfts.length);
