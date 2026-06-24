@@ -442,7 +442,7 @@ async function loadNftsBlockfrost() {
   document.getElementById('allTokenCount').textContent = tokens.length;
 
   renderNftGrid('allNftGrid', nfts);
-  renderTokenList('allTokenGrid', tokens);
+  await renderTokenList('allTokenGrid', tokens);
 
   const ascNfts = nfts.filter(a => a.policy_id === ASC_POLICY);
   document.getElementById('ascNftCount').textContent = ascNfts.length;
