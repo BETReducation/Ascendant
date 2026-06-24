@@ -180,6 +180,7 @@ async function connectWallet(key) {
     connectedAddr = cborHexToAddress(changeAddrHex);
 
     localStorage.setItem('asc_wallet', key);
+    localStorage.removeItem('asc_disconnected');
 
     connectBtn.textContent = shortAddr(connectedAddr);
     connectBtn.classList.add('connected');
