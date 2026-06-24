@@ -38,10 +38,61 @@
     </div>
 
     <div class="nav-right">
-      <button class="btn-outline">Connect Wallet</button>
+      <button class="btn-outline" id="connectWalletBtn">Connect Wallet</button>
       <button class="btn-primary">Start for free</button>
     </div>
   </nav>
+
+  <!-- ═══ WALLET SELECTOR MODAL ═══ -->
+  <div class="modal-overlay" id="walletModal" role="dialog" aria-modal="true" aria-label="Connect wallet">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>Connect your wallet</h2>
+        <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      </div>
+      <p class="modal-sub">Select a wallet to connect. Your keys stay in your wallet — Ascendant never has access to your funds.</p>
+      <div class="wallet-list" id="walletList">
+        <!-- populated by JS -->
+      </div>
+      <p class="modal-footer-note">Don't have a wallet? <a href="#learn">Start the Seeker course — no wallet needed.</a></p>
+    </div>
+  </div>
+
+  <!-- ═══ PROFILE PANEL ═══ -->
+  <div class="profile-overlay" id="profileOverlay"></div>
+  <aside class="profile-panel" id="profilePanel" aria-label="Your profile">
+    <div class="pp-header">
+      <div class="pp-identity">
+        <div class="pp-avatar" id="ppAvatar">?</div>
+        <div>
+          <div class="pp-address" id="ppAddress">—</div>
+          <div class="pp-tier" id="ppTier">Seeker</div>
+        </div>
+      </div>
+      <button class="pp-close" id="ppClose" aria-label="Close profile">✕</button>
+    </div>
+
+    <div class="pp-balance-card">
+      <div class="pp-bal-label">ADA Balance</div>
+      <div class="pp-bal-value" id="ppBalance"><span class="pp-bal-loading">Loading…</span></div>
+    </div>
+
+    <div class="pp-section">
+      <div class="pp-section-title">Ascendant NFTs <span class="pp-count" id="ascNftCount">—</span></div>
+      <div class="pp-nft-grid" id="ascNftGrid">
+        <div class="pp-empty">Connect a wallet to see your credentials</div>
+      </div>
+    </div>
+
+    <div class="pp-section">
+      <div class="pp-section-title">All NFTs &amp; tokens <span class="pp-count" id="allNftCount">—</span></div>
+      <div class="pp-nft-grid" id="allNftGrid">
+        <div class="pp-empty">—</div>
+      </div>
+    </div>
+
+    <button class="pp-disconnect" id="ppDisconnect">Disconnect wallet</button>
+  </aside>
 
   <!-- ═══ HERO ═══ -->
   <div class="hero" id="home">
