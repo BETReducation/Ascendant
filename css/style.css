@@ -670,6 +670,7 @@ footer {
 .token-name { font-size: 13px; font-weight: 600; color: var(--slate-900); display: flex; align-items: center; gap: 6px; }
 .token-ticker { font-size: 10px; font-weight: 700; color: var(--blue-600); background: var(--blue-50); padding: 1px 6px; border-radius: 20px; }
 .token-qty { font-size: 11px; color: var(--slate-400); margin-top: 1px; }
+.token-usd { font-size: 12px; font-weight: 600; color: var(--slate-600); white-space: nowrap; margin-left: auto; }
 
 .pp-disconnect {
   margin: auto 1.5rem 1.5rem;
