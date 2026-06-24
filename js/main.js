@@ -353,7 +353,8 @@ async function loadProfileData() {
   try {
     await loadNftsBlockfrost();
   } catch (e) {
-    console.warn('Blockfrost NFT fetch failed:', e);
+    console.error('Blockfrost NFT fetch failed:', e);
+    console.error('Connected address:', connectedAddr);
     loadNftsMock();
   }
 }
