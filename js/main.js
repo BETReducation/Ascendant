@@ -478,6 +478,32 @@ function renderNftGrid(gridId, nfts, isAscendant = false) {
   }).join('');
 }
 
+function renderTokenList(gridId, tokens) {
+  const grid = document.getElementById(gridId);
+  if (!tokens || tokens.length === 0) {
+    grid.innerHTML = '<div class="pp-empty">No tokens found</div>';
+    return;
+  }
+  grid.style.display = 'none'; // tokens grid starts hidden; tabs control visibility
+  grid.innerHTML = tokens.map(t => {
+    const name   = t.metadata?.name || t.onchain_metadata?.name || t.asset_name || t.asset.slice(0, 8) + '…';
+    const ticker = t.metadata?.ticker ? `<span class="token-ticker">${t.metadata.ticker}</span>` : '';
+    const qty    = parseInt(t.quantity || 0).toLocaleString();
+    return `<div class="token-row"><div class="token-icon">🪙</div><div class="token-info"><div class="token-name">${name}${ticker}</div><div class="token-qty">${qty}</div></div></div>`;
+  }).join('');
+}
+
+// Tab switching
+document.querySelectorAll('.pp-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.pp-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = tab.dataset.tab;
+    document.getElementById('allNftGrid').style.display   = target === 'nfts'    ? 'grid' : 'none';
+    document.getElementById('allTokenGrid').style.display = target === 'tokens'  ? 'flex' : 'none';
+  });
+});
+
 function ipfsToHttp(uri) {
   try {
     if (!uri) return '';
