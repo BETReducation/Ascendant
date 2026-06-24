@@ -481,6 +481,43 @@ function renderNftGrid(gridId, nfts, isAscendant = false) {
   }).join('');
 }
 
+/* ── Price fetching ── */
+
+async function fetchAdaUsd() {
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd');
+    const data = await res.json();
+    return data?.cardano?.usd || 0;
+  } catch { return 0; }
+}
+
+async function fetchTokenPrices(units) {
+  if (TAPTOOLS_API_KEY.includes('YOUR_TAPTOOLS')) return {};
+  try {
+    const res = await fetch('https://openapi.taptools.io/api/v1/token/prices', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-api-key': TAPTOOLS_API_KEY },
+      body: JSON.stringify({ units })
+    });
+    return await res.json(); // { unit: { price: adaAmount } }
+  } catch { return {}; }
+}
+
+async function enrichTokensWithPrices(tokens) {
+  const [adaUsd, tokenPrices] = await Promise.all([
+    fetchAdaUsd(),
+    fetchTokenPrices(tokens.map(t => t.asset))
+  ]);
+
+  return tokens.map(t => {
+    const decimals   = t.metadata?.decimals ?? 0;
+    const walletAmt  = parseInt(t.walletQty || 0) / Math.pow(10, decimals);
+    const adaPrice   = tokenPrices[t.asset]?.price || 0;
+    const usdValue   = walletAmt * adaPrice * adaUsd;
+    return { ...t, walletAmt, adaPrice, usdValue, adaUsd };
+  }).sort((a, b) => b.usdValue - a.usdValue);
+}
+
 function renderTokenList(gridId, tokens) {
   const grid = document.getElementById(gridId);
   if (!tokens || tokens.length === 0) {
