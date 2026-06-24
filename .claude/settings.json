@@ -6,9 +6,21 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd /Users/garybyatt/Documents/GitHub/Ascendant && git add -A && git diff --cached --quiet || (git commit -m \"Auto-save changes\" && git push https://$(/opt/homebrew/bin/gh auth token)@github.com/BETReducation/Ascendant.git main)",
+            "command": "cd /Users/garybyatt/Documents/GitHub/Ascendant && git add -A && git diff --cached --quiet || git commit -m \"Auto-save changes\"",
             "timeout": 30,
-            "statusMessage": "Saving to GitHub..."
+            "statusMessage": "Saving..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /Users/garybyatt/Documents/GitHub/Ascendant && git log --oneline origin/main..HEAD | grep -q . && git push https://$(/opt/homebrew/bin/gh auth token)@github.com/BETReducation/Ascendant.git main",
+            "timeout": 30,
+            "statusMessage": "Pushing to GitHub..."
           }
         ]
       }
