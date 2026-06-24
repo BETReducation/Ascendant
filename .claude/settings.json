@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd /Users/garybyatt/Documents/GitHub/Ascendant && git add -A && git diff --cached --quiet || git commit -m \"Auto-save changes\" && git push origin main 2>/dev/null || true",
+            "command": "cd /Users/garybyatt/Documents/GitHub/Ascendant && git add -A && git diff --cached --quiet || git commit -m \"Auto-save changes\"",
             "timeout": 30,
             "statusMessage": "Saving to GitHub..."
           }
