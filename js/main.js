@@ -52,6 +52,7 @@ async function blockfrostFetch(path) {
 /* ── open / close modal ── */
 
 function openWalletModal() {
+  if (connectedApi) { openProfilePanel(); return; }
   buildWalletList();
   walletModal.classList.add('open');
 }
