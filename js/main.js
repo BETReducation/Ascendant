@@ -216,6 +216,7 @@ ppDisconnect.addEventListener('click', () => {
   adaHandles    = [];
   activeHandle  = null;
   localStorage.removeItem('asc_wallet');
+  localStorage.setItem('asc_disconnected', '1');
   document.getElementById('ppNameRow')?.remove();
   connectBtn.textContent = 'Connect Wallet';
   connectBtn.classList.remove('connected');
