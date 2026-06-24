@@ -408,7 +408,7 @@ async function loadNftsBlockfrost() {
       while (true) {
         const batch = await blockfrostFetch(`/accounts/${stakeAddr}/addresses/assets?page=${page}&count=100`);
         if (!batch.length) break;
-        batch.forEach(a => { if (a.unit !== 'lovelace') assetUnits.push(a.unit); });
+        batch.forEach(a => { if (a.unit !== 'lovelace') assetUnits.push({ unit: a.unit, walletQty: a.quantity }); });
         if (batch.length < 100) break;
         page++;
       }
