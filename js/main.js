@@ -439,31 +439,14 @@ async function loadNftsBlockfrost() {
   updateTier(ascNfts.length);
 }
 
-/* ── Mock data (shown when no Blockfrost key yet) ── */
+/* ── Error state (Blockfrost call failed) ── */
 
-function loadNftsMock() {
-  const mockAsc = [
-    { display_name: 'Keymaster NFT',  onchain_metadata: { image: null }, emoji: '🔑' },
-    { display_name: 'Staker NFT',     onchain_metadata: { image: null }, emoji: '🌱' },
-  ];
-  const mockAll = [
-    ...mockAsc,
-    { display_name: 'CNFT #4821',     onchain_metadata: { image: null }, emoji: '🖼️' },
-    { display_name: 'SpaceBud #001',  onchain_metadata: { image: null }, emoji: '🚀' },
-    { display_name: 'Clay #1234',     onchain_metadata: { image: null }, emoji: '🏺' },
-  ];
-
-  document.getElementById('ascNftCount').textContent = mockAsc.length;
-  document.getElementById('allNftCount').textContent = mockAll.length;
-  renderNftGrid('ascNftGrid', mockAsc, true);
-  renderNftGrid('allNftGrid', mockAll);
-  updateTier(mockAsc.length);
-
-  // Add a subtle note that this is demo data
-  const note = document.createElement('p');
-  note.style.cssText = 'font-size:11px;color:var(--slate-300);margin-top:8px;text-align:center;grid-column:1/-1';
-  note.textContent = 'Add a Blockfrost key to see your real NFTs';
-  document.getElementById('allNftGrid').appendChild(note);
+function showNftError() {
+  document.getElementById('ascNftCount').textContent = '—';
+  document.getElementById('allNftCount').textContent = '—';
+  const msg = '<div class="pp-empty" style="color:var(--slate-400)">Could not load NFTs — check console for details</div>';
+  document.getElementById('ascNftGrid').innerHTML = msg;
+  document.getElementById('allNftGrid').innerHTML = msg;
 }
 
 function renderNftGrid(gridId, nfts, isAscendant = false) {
