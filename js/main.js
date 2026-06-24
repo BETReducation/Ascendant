@@ -484,6 +484,8 @@ function renderNftGrid(gridId, nfts, isAscendant = false) {
 
 function ipfsToHttp(uri) {
   if (!uri) return '';
+  if (Array.isArray(uri)) uri = uri.join('');  // Blockfrost sometimes splits long URIs into arrays
+  if (typeof uri !== 'string') return '';
   if (uri.startsWith('ipfs://')) return 'https://ipfs.io/ipfs/' + uri.slice(7);
   return uri;
 }
