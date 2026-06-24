@@ -381,6 +381,26 @@ function updateTier(ascNftCount) {
 /* ── wire up initial connect button ── */
 connectBtn.addEventListener('click', openWalletModal);
 
+/* ── auto-reconnect on page load ── */
+(async () => {
+  const savedKey = localStorage.getItem('asc_wallet');
+  if (!savedKey) return;
+  // Wait briefly for wallet extensions to inject into window.cardano
+  await new Promise(r => setTimeout(r, 400));
+  if (!window.cardano?.[savedKey]) { localStorage.removeItem('asc_wallet'); return; }
+  try {
+    const walletHandle = window.cardano[savedKey];
+    connectedApi = await walletHandle.enable();
+    const changeAddrHex = await connectedApi.getChangeAddress();
+    connectedAddr = cborHexToAddress(changeAddrHex);
+    connectBtn.textContent = shortAddr(connectedAddr);
+    connectBtn.classList.add('connected');
+    connectBtn.onclick = openProfilePanel;
+  } catch {
+    localStorage.removeItem('asc_wallet');
+  }
+})();
+
 /* ═══ END WALLET CONNECTION ═══ */
 
 /* Parallax on hero background mark */
