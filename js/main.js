@@ -4,7 +4,7 @@
 const BLOCKFROST_PROJECT_ID = 'mainnetRp7S5cPwjwv9zZ1deyHQiXUuQAcLmUWg';
 const BLOCKFROST_BASE       = 'https://cardano-mainnet.blockfrost.io/api/v0';
 const ADA_HANDLE_POLICY     = 'f0ff48bbb7bbe9d59a40f1ce90e9e9d0ff5002ec48f232b49ca0fb9a';
-const TAPTOOLS_API_KEY      = 'YOUR_TAPTOOLS_KEY_HERE';
+const COINGECKO_BASE        = 'https://api.coingecko.com/api/v3';
 
 // Known wallets (CIP-30 window key, display name, emoji fallback)
 const KNOWN_WALLETS = [
