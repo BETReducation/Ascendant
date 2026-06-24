@@ -471,7 +471,7 @@ function renderNftGrid(gridId, nfts, isAscendant = false) {
       const inner = imgUrl
         ? `<img src="${imgUrl}" alt="${name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=nft-card-placeholder>🖼️</div><div class=nft-card-label>${name}</div>'">`
         : `<div class="nft-card-placeholder">🖼️</div>`;
-      return `<div class="nft-card" title="${name}">${inner}<div class="nft-card-label">${name}</div></div>`;
+      return `<div class="nft-card" title="${name}">${inner}</div>`;
     } catch (e) {
       return `<div class="nft-card"><div class="nft-card-placeholder">🖼️</div><div class="nft-card-label">NFT</div></div>`;
     }
