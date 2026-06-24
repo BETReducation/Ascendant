@@ -624,6 +624,23 @@ footer {
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
+.handle-pill {
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 20px; border: 1.5px solid var(--slate-200);
+  background: var(--slate-50); color: var(--slate-400);
+  cursor: pointer; font-family: inherit;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.handle-pill:hover { border-color: var(--blue-400); color: var(--blue-600); }
+.handle-pill.active {
+  background: var(--blue-50); border-color: var(--blue-400);
+  color: var(--blue-700);
+}
+.addr-pill.active {
+  background: var(--slate-100); border-color: var(--slate-300);
+  color: var(--slate-600);
+}
+
 .pp-disconnect {
   margin: auto 1.5rem 1.5rem;
   background: transparent; border: 1px solid var(--slate-200);
