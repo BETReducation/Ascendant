@@ -85,10 +85,12 @@
     </div>
 
     <div class="pp-section">
-      <div class="pp-section-title">All NFTs &amp; tokens <span class="pp-count" id="allNftCount">—</span></div>
-      <div class="pp-nft-grid" id="allNftGrid">
-        <div class="pp-empty">—</div>
+      <div class="pp-tabs">
+        <button class="pp-tab active" data-tab="nfts">NFTs <span class="pp-count" id="allNftCount">—</span></button>
+        <button class="pp-tab" data-tab="tokens">Tokens <span class="pp-count" id="allTokenCount">—</span></button>
       </div>
+      <div class="pp-nft-grid" id="allNftGrid"><div class="pp-empty">—</div></div>
+      <div class="pp-nft-grid" id="allTokenGrid" style="display:none"><div class="pp-empty">—</div></div>
     </div>
 
     <button class="pp-disconnect" id="ppDisconnect">Disconnect wallet</button>
