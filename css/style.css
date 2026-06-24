@@ -657,6 +657,20 @@ footer {
 .pp-tab.active { background: var(--white); color: var(--slate-900); box-shadow: 0 1px 4px rgba(15,23,42,0.08); }
 .pp-tab .pp-count { font-size: 10px; }
 
+#allTokenGrid {
+  display: none; flex-direction: column; gap: 6px; grid-template-columns: unset;
+}
+.token-row {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--slate-50); border: 0.5px solid var(--slate-200);
+  border-radius: var(--radius-md); padding: 10px 12px;
+}
+.token-icon { font-size: 20px; flex-shrink: 0; }
+.token-info { flex: 1; min-width: 0; }
+.token-name { font-size: 13px; font-weight: 600; color: var(--slate-900); display: flex; align-items: center; gap: 6px; }
+.token-ticker { font-size: 10px; font-weight: 700; color: var(--blue-600); background: var(--blue-50); padding: 1px 6px; border-radius: 20px; }
+.token-qty { font-size: 11px; color: var(--slate-400); margin-top: 1px; }
+
 .pp-disconnect {
   margin: auto 1.5rem 1.5rem;
   background: transparent; border: 1px solid var(--slate-200);
