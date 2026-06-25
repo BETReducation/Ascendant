@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 3: Setting up your wallet — Ascendant</title>
+  <link rel="stylesheet" href="course.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../../index.html" class="nav-brand">Ascend<span>ant</span></a>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 12L6 8l4-4"/></svg>
+      Beginner course
+    </a>
+    <div class="nav-right">
+      <div class="nav-xp">XP: <span class="xp-pill" id="navXp">—</span></div>
+    </div>
+  </nav>
+
+  <div class="course-hero">
+    <div class="course-hero-inner">
+      <div class="course-tag">Module 3 of 4 · Seeker</div>
+      <h1>Setting up your wallet</h1>
+      <p>Install a non-custodial Cardano wallet, secure your seed phrase, and understand what it really means to own your ADA.</p>
+      <div class="course-meta-row">
+        <span>⏱ 10 min</span>
+        <span>🎯 +60 XP on completion</span>
+        <span>🔑 You'll need 15 minutes to do this properly</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="xp-progress-section">
+    <div class="xp-progress-inner">
+      <span class="xp-label">Course progress</span>
+      <div class="xp-bar-wrap"><div class="xp-bar-fill" id="xpBar" style="width:0%"></div></div>
+      <span class="xp-value" id="xpText">0 / 200 XP</span>
+      <div class="nft-reward-badge">✦ Keymaster NFT</div>
+    </div>
+  </div>
+
+  <div class="module-layout">
+    <div class="stage-breadcrumb">
+      <a href="../../index.html">Home</a> › <a href="index.html">Beginner course</a> › Module 3
+    </div>
+
+    <!-- SECTION 1: Custodial vs non-custodial -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#EFF6FF">🔑</span> Custodial vs non-custodial</h2>
+      <p>This is the most important concept in all of crypto, so pay attention. There are two ways to hold ADA:</p>
+
+      <div class="diagram-box">
+        <svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto">
+          <!-- Custodial -->
+          <rect x="20" y="20" width="240" height="160" rx="14" fill="#FEF2F2" stroke="#FECACA" stroke-width="2"/>
+          <text x="140" y="50" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="13" font-weight="700" fill="#DC2626">CUSTODIAL</text>
+          <text x="140" y="68" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#64748B">(Exchange wallet)</text>
+          <text x="50" y="100" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#334155">🔑 Keys held by: Exchange</text>
+          <text x="50" y="122" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#334155">⚠️ Risk: Exchange failure</text>
+          <text x="50" y="144" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#334155">🚫 Can't use dApps</text>
+          <text x="50" y="166" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#DC2626" font-weight="600">"Not your keys, not your coins"</text>
+
+          <!-- Non-custodial -->
+          <rect x="320" y="20" width="240" height="160" rx="14" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2"/>
+          <text x="440" y="50" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="13" font-weight="700" fill="#15803D">NON-CUSTODIAL</text>
+          <text x="440" y="68" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#64748B">(Your own wallet)</text>
+          <text x="350" y="100" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#334155">🔑 Keys held by: You</text>
+          <text x="350" y="122" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#334155">✅ Full control always</text>
+          <text x="350" y="144" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#334155">✅ Access dApps &amp; DeFi</text>
+          <text x="350" y="166" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#15803D" font-weight="600">"Your keys, your coins"</text>
+
+          <!-- vs badge -->
+          <circle cx="290" cy="100" r="22" fill="white" stroke="#E2E8F0" stroke-width="2"/>
+          <text x="290" y="106" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="13" font-weight="700" fill="#64748B">vs</text>
+        </svg>
+        <p class="diagram-caption">The single most important choice in crypto ownership.</p>
+      </div>
+
+      <div class="callout callout-amber">
+        <span class="callout-icon">🔐</span>
+        <p><strong>"Not your keys, not your coins"</strong> — this is a well-known phrase in crypto for a reason. If an exchange goes bust, freezes withdrawals, or gets hacked, your ADA could be gone. A non-custodial wallet means only you can access your funds.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2: Choosing a wallet -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#FAF5FF">👛</span> Choosing a Cardano wallet</h2>
+      <p>There are several reputable non-custodial wallets built specifically for Cardano. Here's an honest comparison:</p>
+
+      <table class="wallet-table">
+        <thead>
+          <tr>
+            <th>Wallet</th>
+            <th>Best for</th>
+            <th>Browser ext</th>
+            <th>Mobile</th>
+            <th>Hardware support</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lace</strong> <span style="font-size:11px;color:#2563EB">(by IOG)</span></td>
+            <td>Beginners, clean UI</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td><strong>Eternl</strong></td>
+            <td>Power users, DeFi</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td><strong>Nami</strong></td>
+            <td>Simple, dApp focus</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="partial">~</span></td>
+          </tr>
+          <tr>
+            <td><strong>Vespr</strong></td>
+            <td>Mobile-first</td>
+            <td><span class="partial">~</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-blue">
+        <span class="callout-icon">💡</span>
+        <p><strong>Our recommendation for beginners:</strong> Start with <strong>Lace</strong> — it's built by Input Output Global (the team behind Cardano's development), has the cleanest interface, and supports hardware wallets when you're ready to upgrade security.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 3: Installing Lace -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#EFF6FF">⬇️</span> Installing Lace — step by step</h2>
+      <p>Follow these steps carefully. This process generates your wallet — the seed phrase you receive is the most important thing you'll handle in this entire course.</p>
+
+      <div class="action-steps">
+        <div class="action-steps-title">Installing &amp; creating your Lace wallet</div>
+        <div class="action-step">
+          <div class="step-badge">1</div>
+          <div class="step-text"><strong>Go to the official website only:</strong> <span class="highlight">lace.io</span> — never search for wallet extensions on Google and click the first result. Scammers buy ads to fake wallet sites to steal your seed phrase.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">2</div>
+          <div class="step-text"><strong>Install the browser extension</strong> from the Chrome Web Store or Firefox Add-ons. Verify the developer is listed as <span class="highlight">Input Output</span> and the extension has thousands of reviews.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">3</div>
+          <div class="step-text"><strong>Click "Create a new wallet"</strong> and set a strong spending password. This password encrypts your wallet on this device — it's separate from your seed phrase.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">4</div>
+          <div class="step-text"><strong>Write down your 24-word seed phrase</strong> on paper — not in a notes app, not in a screenshot, not in email. This is covered in the next section.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">5</div>
+          <div class="step-text"><strong>Verify your seed phrase</strong> — Lace will ask you to confirm several words in order. This ensures you've written them down correctly before you can proceed.</div>
+        </div>
+      </div>
+
+      <!-- Mock Lace UI -->
+      <div class="mock-screen">
+        <div class="mock-screen-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="mock-url">Lace Wallet Extension</div>
+        </div>
+        <div class="mock-body">
+          <div style="max-width:320px;margin:0 auto;text-align:center">
+            <div style="width:48px;height:48px;background:linear-gradient(135deg,#2563EB,#7C3AED);border-radius:12px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:24px">⬡</div>
+            <div style="font-weight:700;font-size:16px;margin-bottom:4px;color:#0F172A">Your recovery phrase</div>
+            <div style="font-size:12px;color:#64748B;margin-bottom:1.25rem">Write these 24 words down in order. Store them somewhere safe and private — never share them.</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:1rem">
+              {['ability','marble','voice','garden','stone','river','pocket','cloud','motion','flame','bright','lunar','tower','ocean','dream','silver','anchor','field','noble','candle','trace','valley','summit','crown'].map((w,i)=>`
+              <div style="background:#F1F5F9;border:1px solid #E2E8F0;border-radius:6px;padding:4px 6px;font-size:11px;color:#334155"><span style="color:#94A3B8;font-size:10px">${i+1}.</span> ${w}</div>`).join('')}
+            </div>
+            <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:8px 12px;font-size:12px;color:#DC2626;font-weight:600;margin-bottom:1rem">⚠ Never share these words with anyone</div>
+            <div style="background:#2563EB;color:white;padding:10px;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer">I've written them down →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Seed phrase -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#FFFBEB">📝</span> Your seed phrase — the most critical step</h2>
+      <p>Your 24-word seed phrase (also called a recovery phrase or mnemonic) is the master key to your wallet. Anyone who has these words has complete access to your ADA — forever.</p>
+
+      <div class="action-steps">
+        <div class="action-steps-title">How to store your seed phrase safely</div>
+        <div class="action-step">
+          <div class="step-badge">✓</div>
+          <div class="step-text"><strong>Write it on paper</strong> — use a pen, write clearly, number each word. Then store this paper somewhere physically secure (a safe, a lockbox, or split between two trusted locations).</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">✓</div>
+          <div class="step-text"><strong>Consider a steel backup</strong> — paper can burn or get wet. Steel seed phrase storage cards (like Cryptosteel or Billdodl) are fireproof and waterproof. Worth it for larger amounts.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">✗</div>
+          <div class="step-text"><strong>Never store it digitally</strong> — no photos, no text files, no emails, no cloud notes, no password managers. If it's connected to the internet, it can be stolen.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">✗</div>
+          <div class="step-text"><strong>Never share it with anyone</strong> — no customer support, no "Cardano Foundation" DMs on Twitter, no giveaway verification. Legitimate services will never ask for your seed phrase.</div>
+        </div>
+      </div>
+
+      <div class="pros-cons">
+        <div class="pros-box">
+          <h4>✓ Benefits of self-custody</h4>
+          <ul>
+            <li>Full control — no one can freeze your funds</li>
+            <li>Access DeFi, dApps, and NFT marketplaces</li>
+            <li>Stake natively and earn full rewards</li>
+            <li>Not affected if exchanges fail</li>
+            <li>Your ADA survives as long as your seed phrase does</li>
+          </ul>
+        </div>
+        <div class="cons-box">
+          <h4>✗ Responsibilities</h4>
+          <ul>
+            <li>You are solely responsible for your seed phrase</li>
+            <li>No customer support if you lose access</li>
+            <li>Lost seed phrase = lost ADA, permanently</li>
+            <li>You must stay alert to phishing and scams</li>
+            <li>Steeper learning curve than an exchange</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: Your wallet address -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#F0FDF4">📬</span> Your wallet address</h2>
+      <p>Once your wallet is set up, you'll have a <strong>receiving address</strong> — a long string of letters and numbers starting with <span style="font-family:monospace;background:#F1F5F9;padding:1px 6px;border-radius:4px;font-size:13px">addr1</span>. This is your public address — safe to share when someone wants to send you ADA.</p>
+
+      <div class="mock-screen">
+        <div class="mock-screen-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="mock-url">Lace — Receive</div>
+        </div>
+        <div class="mock-body">
+          <div style="max-width:360px;margin:0 auto;text-align:center">
+            <div style="font-weight:700;font-size:15px;margin-bottom:0.5rem;color:#0F172A">Receive ADA</div>
+            <div style="font-size:12px;color:#64748B;margin-bottom:1.25rem">Share this address to receive ADA or Cardano native tokens.</div>
+            <!-- QR placeholder -->
+            <div style="width:120px;height:120px;background:#F1F5F9;border:1px solid #E2E8F0;border-radius:10px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:32px">⬛</div>
+            <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:10px 14px;font-family:monospace;font-size:11px;color:#334155;word-break:break-all;margin-bottom:10px;text-align:left">addr1qx9f3gk2m9vn4j7r8s2p0d1c5b8a6e3f7g9h2k4l0m1n3q5r7t9w2x4y6z8a0b2c4d6e8f0g2h4j6k8l0m2n4p6r8s0t2u</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div style="background:#EFF6FF;color:#1D4ED8;padding:8px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer">📋 Copy</div>
+              <div style="background:#F0FDF4;color:#15803D;padding:8px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer">🔗 Share</div>
+            </div>
+            <div style="margin-top:10px;font-size:11px;color:#059669">✓ Safe to share publicly</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-blue">
+        <span class="callout-icon">💡</span>
+        <p><strong>Your address vs your seed phrase:</strong> Your wallet address is like your email address — share it freely so people can send you ADA. Your seed phrase is like your master password — never share it with anyone, ever.</p>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="quiz-section">
+      <h3>Quick check ✓</h3>
+      <p class="quiz-sub">Answer correctly to earn your 60 XP for this module.</p>
+
+      <div class="quiz-q">
+        <p>1. What is the safest way to store your 24-word seed phrase?</p>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Screenshot it and save to Google Photos</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Write it on paper and store it in a physically secure location</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Save it in a password manager app</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="d"> Email it to yourself so you can always find it</label>
+        </div>
+      </div>
+
+      <div class="quiz-q">
+        <p>2. Someone messages you on Twitter claiming to be Cardano support and asks for your seed phrase to "verify your wallet". What do you do?</p>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Share the first 12 words only to be safe</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Ask them to verify themselves first, then share</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Never share it — this is a scam. No legitimate service ever asks for your seed phrase</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="d"> Share it only if their account has a blue tick</label>
+        </div>
+      </div>
+
+      <button class="btn-quiz" id="quizBtn" onclick="submitQuiz()">Check answers</button>
+      <div class="quiz-result" id="quizResult"></div>
+    </div>
+
+    <div class="module-nav">
+      <a href="module-2.html" class="btn-module-nav">← Module 2</a>
+      <a href="module-4.html" class="btn-module-nav primary">Next: Moving ADA off an exchange →</a>
+    </div>
+  </div>
+
+  <footer class="advice-footer">
+    <strong>Not financial advice.</strong> This course is for educational purposes only. Always do your own research before making any financial decisions.
+  </footer>
+  <div class="xp-toast" id="xpToast">🎉 +<span class="xp-amount">60 XP</span> earned!</div>
+
+  <script>
+    const MODULE = 3, MODULE_XP = 60, XP_MAX = 200;
+    const XP_MAP = {1:40,2:40,3:60,4:60};
+    function getTotalXP(){return [1,2,3,4].reduce((s,m)=>s+(localStorage.getItem(`asc_mod${m}_xp`)==='done'?XP_MAP[m]:0),0);}
+    function updateBar(){const xp=getTotalXP();document.getElementById('xpBar').style.width=(xp/XP_MAX*100)+'%';document.getElementById('xpText').textContent=xp+' / '+XP_MAX+' XP';document.getElementById('navXp').textContent=xp+' / '+XP_MAX;}
+    function showToast(){const t=document.getElementById('xpToast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+    const ANSWERS={q1:'b',q2:'c'};let submitted=false;
+    function submitQuiz(){
+      if(submitted)return;
+      const a1=document.querySelector('input[name="q1"]:checked'),a2=document.querySelector('input[name="q2"]:checked');
+      if(!a1||!a2){alert('Please answer both questions.');return;}
+      const pass=a1.value===ANSWERS.q1&&a2.value===ANSWERS.q2;
+      ['q1','q2'].forEach(n=>{const ans=n==='q1'?a1:a2;document.querySelectorAll(`input[name="${n}"]`).forEach(el=>{el.closest('.quiz-option').classList.add(el.value===ANSWERS[n]?'correct':(el.value===ans.value?'wrong':''));});});
+      document.querySelectorAll('input[type=radio]').forEach(el=>el.disabled=true);
+      document.getElementById('quizBtn').disabled=true;
+      const result=document.getElementById('quizResult');result.classList.add('show');
+      if(pass){
+        result.classList.add('pass');result.innerHTML='✓ &nbsp;Correct! You\'ve earned <strong>+60 XP</strong> for completing Module 3.';
+        submitted=true;
+        if(localStorage.getItem(`asc_mod${MODULE}_xp`)!=='done'){localStorage.setItem(`asc_mod${MODULE}_xp`,'done');showToast();}
+        updateBar();
+      }else{
+        result.classList.add('fail');result.innerHTML='✗ &nbsp;Not quite — review the sections above and try again.';
+        setTimeout(()=>{result.classList.remove('show','fail');document.getElementById('quizBtn').disabled=false;document.querySelectorAll('input[type=radio]').forEach(el=>el.disabled=false);document.querySelectorAll('.quiz-option').forEach(el=>el.classList.remove('correct','wrong'));},2500);
+      }
+    }
+    updateBar();
+    if(localStorage.getItem(`asc_mod${MODULE}_xp`)==='done'){document.getElementById('quizBtn').textContent='Already completed ✓';document.getElementById('quizBtn').disabled=true;submitted=true;}
+  </script>
+</body>
+</html>
