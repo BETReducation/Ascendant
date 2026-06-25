@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 4: Moving ADA off an exchange — Ascendant</title>
+  <link rel="stylesheet" href="course.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../../index.html" class="nav-brand">Ascend<span>ant</span></a>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 12L6 8l4-4"/></svg>
+      Beginner course
+    </a>
+    <div class="nav-right">
+      <div class="nav-xp">XP: <span class="xp-pill" id="navXp">—</span></div>
+    </div>
+  </nav>
+
+  <div class="course-hero">
+    <div class="course-hero-inner">
+      <div class="course-tag">Module 4 of 4 · Seeker · Final module</div>
+      <h1>Moving ADA off an exchange</h1>
+      <p>The final step to true self-custody — send your ADA from an exchange to your own wallet, with every safety check explained along the way.</p>
+      <div class="course-meta-row">
+        <span>⏱ 8 min</span>
+        <span>🎯 +60 XP on completion</span>
+        <span>✦ Keymaster NFT awarded</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="xp-progress-section">
+    <div class="xp-progress-inner">
+      <span class="xp-label">Course progress</span>
+      <div class="xp-bar-wrap"><div class="xp-bar-fill" id="xpBar" style="width:0%"></div></div>
+      <span class="xp-value" id="xpText">0 / 200 XP</span>
+      <div class="nft-reward-badge">✦ Keymaster NFT</div>
+    </div>
+  </div>
+
+  <div class="module-layout">
+    <div class="stage-breadcrumb">
+      <a href="../../index.html">Home</a> › <a href="index.html">Beginner course</a> › Module 4
+    </div>
+
+    <!-- SECTION 1: Why move? -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#EFF6FF">🚀</span> Why move ADA to your own wallet?</h2>
+      <p>In Module 2 we covered the risks of leaving ADA on an exchange. Now that you have your own wallet (Module 3), you're ready to take full ownership. Here's a quick reminder of why this matters:</p>
+
+      <div class="diagram-box">
+        <svg viewBox="0 0 580 170" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto">
+          <!-- Exchange -->
+          <rect x="20" y="30" width="180" height="110" rx="12" fill="#FEF2F2" stroke="#FECACA" stroke-width="2"/>
+          <text x="110" y="60" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="13" font-weight="700" fill="#DC2626">ON EXCHANGE</text>
+          <text x="35" y="86" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#64748B">⚠️ Exchange holds keys</text>
+          <text x="35" y="104" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#64748B">⚠️ Could be frozen</text>
+          <text x="35" y="122" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#64748B">⚠️ No dApp access</text>
+
+          <!-- Arrow with ADA -->
+          <line x1="205" y1="85" x2="365" y2="85" stroke="#2563EB" stroke-width="2.5" stroke-dasharray="6,4"/>
+          <polygon points="365,79 378,85 365,91" fill="#2563EB"/>
+          <rect x="252" y="62" width="70" height="30" rx="6" fill="white" stroke="#BFDBFE" stroke-width="1.5"/>
+          <text x="287" y="82" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" font-weight="700" fill="#2563EB">₳ ADA</text>
+
+          <!-- Your wallet -->
+          <rect x="380" y="30" width="180" height="110" rx="12" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2"/>
+          <text x="470" y="60" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="13" font-weight="700" fill="#15803D">YOUR WALLET</text>
+          <text x="395" y="86" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#334155">✅ You hold the keys</text>
+          <text x="395" y="104" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#334155">✅ Fully in your control</text>
+          <text x="395" y="122" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#334155">✅ Stake &amp; use dApps</text>
+        </svg>
+        <p class="diagram-caption">Moving ADA to your own wallet completes the journey to true self-custody.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2: Before you begin -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#FFFBEB">✅</span> Before you send — the safety checklist</h2>
+      <p>Crypto transactions are irreversible. If you send ADA to the wrong address, it's gone. Take these steps before sending a single lovelace:</p>
+
+      <div class="action-steps">
+        <div class="action-steps-title">Pre-send checklist</div>
+        <div class="action-step">
+          <div class="step-badge">1</div>
+          <div class="step-text"><strong>Have your receiving address ready</strong> — open your Lace wallet and go to Receive. Copy the full address. Cardano addresses start with <span class="highlight">addr1</span> and are 59–103 characters long.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">2</div>
+          <div class="step-text"><strong>Send a test transaction first</strong> — before sending your full balance, send a small amount (e.g. 5–10 ADA). Verify it arrives in your wallet. Then send the rest. This small precaution has saved people thousands.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">3</div>
+          <div class="step-text"><strong>Select the correct network</strong> — make sure you're sending on the <strong>Cardano</strong> network, not ERC-20 or another chain. Sending Cardano ADA to an Ethereum address will result in permanent loss.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">4</div>
+          <div class="step-text"><strong>Check the withdrawal fee</strong> — your exchange will charge a small network/withdrawal fee (typically 0.5–2 ADA). Make sure you have enough balance to cover this on top of your send amount.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">5</div>
+          <div class="step-text"><strong>Double-check the address before confirming</strong> — compare the first 6 and last 6 characters of the address you pasted with the one in your wallet. Clipboard-hijacking malware can swap addresses silently.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: Step by step on the exchange -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#EFF6FF">📤</span> How to withdraw — step by step</h2>
+      <p>The exact steps vary by exchange, but the flow is the same everywhere. Here's what it looks like:</p>
+
+      <div class="mock-screen">
+        <div class="mock-screen-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="mock-url">exchange.example.com / withdraw</div>
+        </div>
+        <div class="mock-body">
+          <div style="max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:1rem">
+            <div style="font-weight:700;font-size:15px;color:#0F172A">Withdraw ADA</div>
+
+            <div>
+              <div style="font-size:12px;font-weight:600;color:#64748B;margin-bottom:4px">Network</div>
+              <div style="background:#EFF6FF;border:2px solid #2563EB;border-radius:8px;padding:10px 14px;font-size:13px;font-weight:700;color:#1D4ED8;display:flex;align-items:center;gap:8px">
+                <span>⬡</span> Cardano (ADA) <span style="margin-left:auto;font-size:11px;font-weight:500;color:#2563EB">✓ Correct network selected</span>
+              </div>
+              <div style="font-size:11px;color:#DC2626;margin-top:4px">⚠️ Always double-check the network. Sending to wrong network = permanent loss.</div>
+            </div>
+
+            <div>
+              <div style="font-size:12px;font-weight:600;color:#64748B;margin-bottom:4px">Recipient address</div>
+              <div style="background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:8px;padding:10px 14px;font-family:monospace;font-size:11px;color:#334155;word-break:break-all">addr1qx9f3gk2m9vn4j7r8s2p0d1c5b8a6e3f7g9h2k4l0m1n3q5r7t9w2x4y…</div>
+              <div style="font-size:11px;color:#059669;margin-top:4px">✓ Verified: starts with addr1 · Check first 6 &amp; last 6 characters match your wallet</div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div>
+                <div style="font-size:12px;font-weight:600;color:#64748B;margin-bottom:4px">Amount</div>
+                <div style="background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;color:#0F172A">₳ 10.00</div>
+                <div style="font-size:11px;color:#64748B;margin-top:4px">Test transaction first!</div>
+              </div>
+              <div>
+                <div style="font-size:12px;font-weight:600;color:#64748B;margin-bottom:4px">Withdrawal fee</div>
+                <div style="background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:8px;padding:10px 14px;font-size:14px;color:#64748B">₳ 1.00</div>
+                <div style="font-size:11px;color:#64748B;margin-top:4px">Charged by exchange</div>
+              </div>
+            </div>
+
+            <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:10px 14px;font-size:13px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="color:#64748B">You send</span><span style="font-weight:700">₳ 11.00</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:#64748B">Recipient receives</span><span style="font-weight:700;color:#059669">₳ 10.00</span></div>
+            </div>
+
+            <div style="background:#2563EB;color:white;padding:12px;border-radius:10px;font-weight:700;font-size:14px;text-align:center;cursor:pointer">Confirm withdrawal →</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-blue" style="margin-top:1.5rem">
+        <span class="callout-icon">⏱</span>
+        <p><strong>How long does it take?</strong> Cardano transactions typically confirm in 20–60 seconds on-chain. However, exchanges often have internal processing queues that add 5–30 minutes. Your test transaction should arrive within the hour.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Verifying arrival -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#F0FDF4">🔍</span> Verifying your ADA arrived</h2>
+      <p>Once you've sent the transaction, here's how to confirm it landed:</p>
+
+      <div class="action-steps">
+        <div class="action-steps-title">Checking your transaction</div>
+        <div class="action-step">
+          <div class="step-badge">1</div>
+          <div class="step-text"><strong>Check your Lace wallet</strong> — open the wallet extension and your balance should update automatically. If it doesn't update, try refreshing the page.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">2</div>
+          <div class="step-text"><strong>Verify on Cardanoscan</strong> — visit <span class="highlight">cardanoscan.io</span> and paste your wallet address. You'll see every transaction in and out, with block confirmations and timestamps. This is public blockchain data — no login needed.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">3</div>
+          <div class="step-text"><strong>Confirm your test, then send the rest</strong> — once the test amount (e.g. 10 ADA) appears in your wallet and on Cardanoscan, go back to the exchange and withdraw the remaining balance.</div>
+        </div>
+      </div>
+
+      <div class="mock-screen">
+        <div class="mock-screen-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="mock-url">cardanoscan.io/address/addr1qx9f3…</div>
+        </div>
+        <div class="mock-body">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+              <div>
+                <div style="font-size:11px;color:#64748B;margin-bottom:2px">ADA Balance</div>
+                <div style="font-size:22px;font-weight:700;color:#0F172A">₳ 10.00</div>
+              </div>
+              <div style="background:#F0FDF4;border:1px solid #86EFAC;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;color:#15803D">✓ Address verified on-chain</div>
+            </div>
+            <div style="border-top:1px solid #E2E8F0;padding-top:12px">
+              <div style="font-size:12px;font-weight:700;color:#334155;margin-bottom:8px">Recent transactions</div>
+              <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+                <div>
+                  <div style="font-size:12px;font-weight:700;color:#059669">↓ Received</div>
+                  <div style="font-family:monospace;font-size:11px;color:#64748B">tx: 3f8a2b…d94c</div>
+                  <div style="font-size:11px;color:#94A3B8">2 minutes ago · Block #10,284,571</div>
+                </div>
+                <div style="font-size:16px;font-weight:700;color:#059669">+₳ 10.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: What next? -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#FAF5FF">🎯</span> What to do next</h2>
+      <p>With ADA in your own wallet, you've achieved real self-custody. Here's what opens up for you now:</p>
+
+      <div class="pros-cons">
+        <div class="pros-box">
+          <h4>✓ You can now</h4>
+          <ul>
+            <li>Stake your ADA and earn ~3% annual rewards</li>
+            <li>Keep staking rewards liquid — no lock-up</li>
+            <li>Use Cardano dApps and DeFi protocols</li>
+            <li>Buy, sell, and hold Cardano NFTs</li>
+            <li>Participate in Cardano governance (Voltaire)</li>
+            <li>Upgrade to a hardware wallet for extra security</li>
+          </ul>
+        </div>
+        <div class="cons-box">
+          <h4>✗ Keep in mind</h4>
+          <ul>
+            <li>You are now solely responsible for security</li>
+            <li>Guard your seed phrase with your life</li>
+            <li>Be alert to phishing and fake dApp sites</li>
+            <li>Only connect your wallet to trusted dApps</li>
+            <li>ADA price remains volatile — invest carefully</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout callout-blue">
+        <span class="callout-icon">⬡</span>
+        <p><strong>Staking is the natural next step.</strong> Once your ADA is in your wallet, you can delegate to a staking pool and earn approximately 3–4% annual rewards — without locking your ADA or losing access to it. This is covered in the next course: <strong>What is staking and why does it matter?</strong></p>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="quiz-section" id="quizSection">
+      <h3>Final check ✓</h3>
+      <p class="quiz-sub">Pass both questions to complete the course and earn your Keymaster NFT.</p>
+
+      <div class="quiz-q">
+        <p>1. You're about to send ADA from an exchange to your wallet for the first time. What's the smartest first move?</p>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Send your full balance immediately to save on fees</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Send a small test amount first, verify it arrives, then send the rest</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Ask the exchange to send it directly — they handle the safety</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="d"> Wait 24 hours before sending anything</label>
+        </div>
+      </div>
+
+      <div class="quiz-q">
+        <p>2. Where can you publicly verify that a Cardano transaction has been confirmed on-chain?</p>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Inside the Lace wallet only — it's private</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> You have to ask the exchange to confirm it</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> On Cardanoscan — a public blockchain explorer anyone can use</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="d"> Only IOG staff can verify transactions</label>
+        </div>
+      </div>
+
+      <button class="btn-quiz" id="quizBtn" onclick="submitQuiz()">Complete the course</button>
+      <div class="quiz-result" id="quizResult"></div>
+
+      <!-- Completion reward -->
+      <div class="completion-card" id="completionCard" style="display:none;margin-top:2rem;background:linear-gradient(135deg,#0F172A,#1E3A8A);border-radius:16px;padding:2rem;text-align:center;color:white">
+        <div style="font-size:48px;margin-bottom:0.75rem">✦</div>
+        <div style="font-size:1.4rem;font-weight:700;margin-bottom:0.5rem">Course complete!</div>
+        <div style="font-size:15px;color:rgba(255,255,255,0.75);margin-bottom:1.5rem">You've earned the <strong style="color:#FBBF24">Keymaster NFT</strong> — proof that you understand self-custody on Cardano.</div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.5rem">Total XP earned</div>
+          <div style="font-size:2rem;font-weight:700;color:#FBBF24">200 / 200 XP</div>
+        </div>
+        <a href="../../index.html#learn" style="display:inline-block;background:#2563EB;color:white;padding:12px 24px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none">Connect wallet to claim NFT →</a>
+        <div style="margin-top:1rem;font-size:12px;color:rgba(255,255,255,0.4)">Wallet connection required to mint your on-chain credential</div>
+      </div>
+    </div>
+
+    <div class="module-nav">
+      <a href="module-3.html" class="btn-module-nav">← Module 3</a>
+      <a href="index.html" class="btn-module-nav primary">Back to course overview →</a>
+    </div>
+  </div>
+
+  <footer class="advice-footer">
+    <strong>Not financial advice.</strong> This course is for educational purposes only. Always do your own research before making any financial decisions.
+  </footer>
+  <div class="xp-toast" id="xpToast">🎉 +<span class="xp-amount">60 XP</span> earned — Course complete!</div>
+
+  <script>
+    const MODULE = 4, MODULE_XP = 60, XP_MAX = 200;
+    const XP_MAP = {1:40,2:40,3:60,4:60};
+    function getTotalXP(){return [1,2,3,4].reduce((s,m)=>s+(localStorage.getItem(`asc_mod${m}_xp`)==='done'?XP_MAP[m]:0),0);}
+    function updateBar(){const xp=getTotalXP();document.getElementById('xpBar').style.width=(xp/XP_MAX*100)+'%';document.getElementById('xpText').textContent=xp+' / '+XP_MAX+' XP';document.getElementById('navXp').textContent=xp+' / '+XP_MAX;}
+    function showToast(){const t=document.getElementById('xpToast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000);}
+    const ANSWERS={q1:'b',q2:'c'};let submitted=false;
+    function submitQuiz(){
+      if(submitted)return;
+      const a1=document.querySelector('input[name="q1"]:checked'),a2=document.querySelector('input[name="q2"]:checked');
+      if(!a1||!a2){alert('Please answer both questions.');return;}
+      const pass=a1.value===ANSWERS.q1&&a2.value===ANSWERS.q2;
+      ['q1','q2'].forEach(n=>{const ans=n==='q1'?a1:a2;document.querySelectorAll(`input[name="${n}"]`).forEach(el=>{el.closest('.quiz-option').classList.add(el.value===ANSWERS[n]?'correct':(el.value===ans.value?'wrong':''));});});
+      document.querySelectorAll('input[type=radio]').forEach(el=>el.disabled=true);
+      document.getElementById('quizBtn').disabled=true;
+      const result=document.getElementById('quizResult');result.classList.add('show');
+      if(pass){
+        result.classList.add('pass');result.innerHTML='✓ &nbsp;All correct! You\'ve completed the beginner course and earned <strong>+60 XP</strong>.';
+        submitted=true;
+        if(localStorage.getItem(`asc_mod${MODULE}_xp`)!=='done'){localStorage.setItem(`asc_mod${MODULE}_xp`,'done');showToast();}
+        updateBar();
+        setTimeout(()=>{ document.getElementById('completionCard').style.display='block'; document.getElementById('completionCard').scrollIntoView({behavior:'smooth',block:'center'}); },800);
+      }else{
+        result.classList.add('fail');result.innerHTML='✗ &nbsp;Not quite — review the sections above and try again.';
+        setTimeout(()=>{result.classList.remove('show','fail');document.getElementById('quizBtn').disabled=false;document.querySelectorAll('input[type=radio]').forEach(el=>el.disabled=false);document.querySelectorAll('.quiz-option').forEach(el=>el.classList.remove('correct','wrong'));},2500);
+      }
+    }
+    updateBar();
+    if(localStorage.getItem(`asc_mod${MODULE}_xp`)==='done'){
+      document.getElementById('quizBtn').textContent='Already completed ✓';
+      document.getElementById('quizBtn').disabled=true;
+      submitted=true;
+      document.getElementById('completionCard').style.display='block';
+    }
+  </script>
+</body>
+</html>
