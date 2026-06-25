@@ -264,7 +264,8 @@
       ['q1','q2'].forEach(n=>{
         const ans=n==='q1'?a1:a2;
         document.querySelectorAll(`input[name="${n}"]`).forEach(el=>{
-          el.closest('.quiz-option').classList.add(el.value===ANSWERS[n]?'correct':(el.value===ans.value?'wrong':''));
+          if(el.value===ANSWERS[n]) el.closest('.quiz-option').classList.add('correct');
+          else if(el.value===ans.value) el.closest('.quiz-option').classList.add('wrong');
         });
       });
       document.querySelectorAll('input[type=radio]').forEach(el=>el.disabled=true);
