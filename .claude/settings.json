@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd /Users/garybyatt/Documents/GitHub/Ascendant && git add -A && git diff --cached --quiet || (git commit -m \"Auto-save changes\" && git push https://$(/opt/homebrew/bin/gh auth token)@github.com/BETReducation/Ascendant.git main)",
+            "command": "cd /Users/garybyatt/Documents/GitHub/Ascendant && git add -A && git diff --cached --quiet || (git commit -m \"Auto-save changes\" && git push origin main)",
             "timeout": 60,
             "statusMessage": "Saving and pushing..."
           }
