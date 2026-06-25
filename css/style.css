@@ -305,8 +305,9 @@ hr.divider {
   padding: 1.35rem; cursor: pointer;
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
   text-decoration: none; color: inherit;
-  display: block;
+  display: flex; flex-direction: column;
 }
+.course-card .course-meta { margin-top: auto; }
 .course-card:hover {
   border-color: #93C5FD;
   transform: translateY(-2px);
