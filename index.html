@@ -664,6 +664,19 @@
 
   <!-- ═══ SCRIPTS ═══ -->
   <script src="js/main.js?v=8"></script>
+  <script>
+    document.querySelectorAll('.course-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const panel = tab.dataset.panel;
+        document.querySelectorAll('.course-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+        document.getElementById('panel-' + panel).style.display = '';
+        document.querySelectorAll('.tab-desc-item').forEach(d => d.classList.remove('active'));
+        document.querySelector(`.tab-desc-item[data-desc="${panel}"]`).classList.add('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
