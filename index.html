@@ -199,10 +199,183 @@
     <div class="section-h fade-up">Start wherever you are</div>
     <p class="section-sub fade-up">No prerequisites. No pressure. Every lesson is free to access — the NFT rewards are the bonus.</p>
 
+    <!-- ── COURSE TAB SWITCHER ── -->
+    <div class="course-tabs">
+      <button class="course-tab active" data-panel="essentials">
+        ⚡ Essentials
+      </button>
+      <button class="course-tab" data-panel="full">
+        📚 Full Courses
+      </button>
+    </div>
+    <div class="course-tab-desc" id="tabDesc">
+      <div class="tab-desc-item active" data-desc="essentials">
+        <strong>Essentials</strong> — Fast, efficient, and practical. Get set up and ready on Cardano in no time, with no filler.
+      </div>
+      <div class="tab-desc-item" data-desc="full">
+        <strong>Full Courses</strong> — Detailed and thorough. A deep dive into the world of Cardano, with XP, quizzes, and NFT credentials.
+      </div>
+    </div>
+
+    <!-- ══ ESSENTIALS PANEL (default) ══ -->
+    <div class="tab-panel" id="panel-essentials">
+
+      <div class="courses-group">
+        <div class="courses-group-label tag-seeker-label">
+          <span class="tier-tag tag-seeker">Seeker</span>
+          <span class="courses-group-sub">The foundations — get set up fast</span>
+        </div>
+        <div class="courses-grid">
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-seeker">Seeker</span>
+            <h3>Set up your Cardano wallet</h3>
+            <p>Go to lace.io, install the extension, write down your 24 words, done. You have a wallet in under 10 minutes.</p>
+            <div class="course-meta">
+              <span>⏱ 10 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-seeker">Seeker</span>
+            <h3>Buy ADA and move it to your wallet</h3>
+            <p>Create an exchange account, buy ADA, copy your wallet address, withdraw. Step by step with every click shown.</p>
+            <div class="course-meta">
+              <span>⏱ 8 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-seeker">Seeker</span>
+            <h3>Stake your ADA in 3 clicks</h3>
+            <p>Open your wallet, go to staking, pick a pool, click delegate. Start earning rewards — no lock-up, no risk to your ADA.</p>
+            <div class="course-meta">
+              <span>⏱ 5 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-seeker">Seeker</span>
+            <h3>5 rules to keep your ADA safe</h3>
+            <p>Never share your seed phrase. Don't click wallet links in emails. Always check the URL. Three more rules inside.</p>
+            <div class="course-meta">
+              <span>⏱ 3 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-seeker">Seeker</span>
+            <h3>Add a hardware wallet</h3>
+            <p>Plug in your Ledger, open Lace, click connect hardware wallet, follow the prompts. Maximum security in minutes.</p>
+            <div class="course-meta">
+              <span>⏱ 8 min</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="courses-group">
+        <div class="courses-group-label tag-builder-label">
+          <span class="tier-tag tag-builder">Builder</span>
+          <span class="courses-group-sub">Use the ecosystem — quick-start actions</span>
+        </div>
+        <div class="courses-grid">
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-builder">Builder</span>
+            <h3>Make your first token swap</h3>
+            <p>Go to minswap.org, connect wallet, pick two tokens, enter an amount, confirm. Your first DEX trade done.</p>
+            <div class="course-meta">
+              <span>⏱ 5 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-builder">Builder</span>
+            <h3>Read a price chart</h3>
+            <p>What the candles mean, where to look, what to ignore. One quick-reference page — no jargon.</p>
+            <div class="course-meta">
+              <span>⏱ 5 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-builder">Builder</span>
+            <h3>Add liquidity to a pool</h3>
+            <p>Pick a pair on Minswap, enter your amounts, approve both tokens, confirm. Two minutes and you're providing liquidity.</p>
+            <div class="course-meta">
+              <span>⏱ 5 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-builder">Builder</span>
+            <h3>Buy an NFT on jpg.store</h3>
+            <p>Go to jpg.store, browse collections, click Buy Now, confirm in your wallet. Your first Cardano NFT in minutes.</p>
+            <div class="course-meta">
+              <span>⏱ 4 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-builder">Builder</span>
+            <h3>Cast your governance vote</h3>
+            <p>Go to gov.tools, connect wallet, find a proposal, vote Yes or No, confirm. Shape the network's direction in one click.</p>
+            <div class="course-meta">
+              <span>⏱ 5 min</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="courses-group">
+        <div class="courses-group-label tag-arch-label">
+          <span class="tier-tag tag-arch">Architect</span>
+          <span class="courses-group-sub">Build on Cardano — the bare minimum to get started</span>
+        </div>
+        <div class="courses-grid">
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-arch">Architect</span>
+            <h3>Deploy your first smart contract</h3>
+            <p>Install Aiken, copy the starter template, run aiken build, submit to testnet. Your first validator on-chain.</p>
+            <div class="course-meta">
+              <span>⏱ 15 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-arch">Architect</span>
+            <h3>Mint a native token</h3>
+            <p>Write a one-line minting policy, run the cardano-cli command, check your wallet. Token created — no Plutus required.</p>
+            <div class="course-meta">
+              <span>⏱ 10 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-arch">Architect</span>
+            <h3>Query the blockchain</h3>
+            <p>Sign up for Blockfrost, grab your API key, paste the endpoint into your browser. On-chain data in seconds.</p>
+            <div class="course-meta">
+              <span>⏱ 5 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-arch">Architect</span>
+            <h3>Run a Cardano node</h3>
+            <p>Install the binary, download the config files, run the start command, wait for sync. Node running — that's it.</p>
+            <div class="course-meta">
+              <span>⏱ 15 min</span>
+            </div>
+          </a>
+          <a class="course-card fade-up" href="#">
+            <span class="tier-tag tag-arch">Architect</span>
+            <h3>Submit a Catalyst proposal</h3>
+            <p>Open the submission form, fill in your project title, problem, solution, and budget. Hit submit before the deadline.</p>
+            <div class="course-meta">
+              <span>⏱ 10 min</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /panel-essentials -->
+
+    <!-- ══ FULL COURSES PANEL ══ -->
+    <div class="tab-panel" id="panel-full" style="display:none">
+
     <div class="courses-group">
       <div class="courses-group-label tag-seeker-label">
         <span class="tier-tag tag-seeker">Seeker</span>
-        <span class="courses-group-sub">The foundations — no wallet needed to start</span>
+        <span class="courses-group-sub">The foundations — getting your first ADA</span>
       </div>
       <div class="courses-grid">
         <a class="course-card fade-up" href="courses/beginner/index.html">
