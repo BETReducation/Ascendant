@@ -306,6 +306,7 @@ hr.divider {
 /* ─── COURSE CARDS ─── */
 
 #learn .section-sub { margin-bottom: 4rem; }
+#learn .tab-panel .courses-group:first-child { margin-top: 2.5rem; }
 
 .courses-group { margin-bottom: 3rem; }
 .courses-group:last-child { margin-bottom: 0; }
