@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Query the blockchain — Ascendant Essentials</title>
+  <link rel="stylesheet" href="essentials.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="../../index.html" class="nav-brand">Ascend<span>ant</span></a>
+    <a href="../../index.html#learn" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 12L6 8l4-4"/></svg>
+      All courses
+    </a>
+    <div class="nav-right"><span class="nav-pill pill-arch">Architect · Essentials</span></div>
+  </nav>
+
+  <div class="ess-hero">
+    <div class="ess-hero-inner">
+      <div class="ess-eyebrow">⚡ Essentials · Architect Step 3 of 5</div>
+      <h1>Query the blockchain</h1>
+      <p>Sign up for Blockfrost, get an API key, and pull live on-chain data — addresses, transactions, and assets — in seconds.</p>
+      <div class="ess-meta-row">
+        <span>⏱ 5 min</span>
+        <span>🌐 No node required — just a browser</span>
+        <span>🆓 Free tier available</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ess-body">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a> › <a href="../../index.html#learn">Courses</a> › Essentials › Query the blockchain
+    </div>
+
+    <div class="ess-summary">
+      <div class="ess-summary-item">🔍 <strong>What you'll do:</strong> Query live Cardano data via the Blockfrost API</div>
+      <div class="ess-summary-item">🛠 <strong>Tools:</strong> A browser — or curl / any programming language</div>
+      <div class="ess-summary-item">🆓 <strong>Free tier:</strong> 50,000 API calls/day at no cost</div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">1</div>
+      <div class="step-content">
+        <h3>Sign up for Blockfrost</h3>
+        <p>Go to <strong>blockfrost.io</strong> and click <strong>Get started for free</strong>. Create an account with your email. No credit card required for the free tier.</p>
+        <div class="img-placeholder wide">
+          <div class="img-placeholder-inner">
+            <span class="img-ph-icon">📸</span>
+            <span class="img-ph-title">Screenshot: blockfrost.io homepage</span>
+            <span class="img-ph-sub">Show the Blockfrost homepage with the "Get started for free" CTA button</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">2</div>
+      <div class="step-content">
+        <h3>Create a project and get your API key</h3>
+        <p>Once logged in, click <strong>+ Add Project</strong>. Name it anything, select <strong>Cardano Mainnet</strong>, and click <strong>Save</strong>. Your <strong>Project ID</strong> (API key) will be displayed. Copy it — you'll need it for every API request.</p>
+        <div class="img-placeholder wide">
+          <div class="img-placeholder-inner">
+            <span class="img-ph-icon">📸</span>
+            <span class="img-ph-title">Screenshot: Blockfrost dashboard — Project page with API key</span>
+            <span class="img-ph-sub">Show the project card with the Project ID field (key can be blurred/redacted)</span>
+          </div>
+        </div>
+        <div class="callout callout-amber">
+          <span class="callout-icon">⚠️</span>
+          <p>Keep your API key private — treat it like a password. Don't commit it to public GitHub repositories.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">3</div>
+      <div class="step-content">
+        <h3>Make your first API request</h3>
+        <p>Open your terminal and run (replace <code style="background:#F1F5F9;padding:1px 6px;border-radius:4px;font-size:13px">YOUR_PROJECT_ID</code> with your key):</p>
+        <code class="cmd">curl -H "project_id: YOUR_PROJECT_ID" \
+  https://cardano-mainnet.blockfrost.io/api/v0/blocks/latest</code>
+        <p>You'll get back JSON with details of the most recently confirmed Cardano block — its hash, slot number, epoch, and transaction count.</p>
+        <div class="img-placeholder">
+          <div class="img-placeholder-inner">
+            <span class="img-ph-icon">📸</span>
+            <span class="img-ph-title">Screenshot: Terminal — JSON response from Blockfrost /blocks/latest</span>
+            <span class="img-ph-sub">Show the curl output with formatted JSON — slot, epoch, hash visible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">4</div>
+      <div class="step-content">
+        <h3>Query a wallet address</h3>
+        <p>Replace the address below with any Cardano wallet address you want to inspect:</p>
+        <code class="cmd">curl -H "project_id: YOUR_PROJECT_ID" \
+  https://cardano-mainnet.blockfrost.io/api/v0/addresses/addr1qx9f3...YOUR_ADDRESS</code>
+        <p>The response includes the ADA balance, token balances, and transaction count for that address. This is public on-chain data — no permission required.</p>
+        <div class="callout callout-blue">
+          <span class="callout-icon">💡</span>
+          <p>Blockfrost supports Python, JavaScript, Rust, Go, and more through official SDKs. Once you have your API key, you can build Cardano apps without running your own node.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-steps">
+      <h3>What's next?</h3>
+      <p>You can query the blockchain. Next: run your own Cardano node for maximum independence.</p>
+      <div class="next-links">
+        <a href="es-14-run-node.html" class="btn-next btn-next-primary">Next: Run a Cardano node →</a>
+        <a href="../../index.html#learn" class="btn-next btn-next-ghost">Back to all courses</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="es-12-mint-token.html" class="btn-page-nav">← Mint a token</a>
+      <a href="es-14-run-node.html" class="btn-page-nav primary">Next: Run a node →</a>
+    </div>
+  </div>
+
+  <footer class="advice-footer">
+    <strong>Not financial advice.</strong> This guide is for educational purposes only.
+  </footer>
+</body>
+</html>
