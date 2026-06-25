@@ -273,6 +273,7 @@ hr.divider {
 /* ─── COURSE CARDS ─── */
 
 .courses-group { margin-bottom: 3rem; }
+.courses-group:first-child { margin-top: 2rem; }
 .courses-group:last-child { margin-bottom: 0; }
 
 .courses-group-label {
