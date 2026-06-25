@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run a Cardano node — Ascendant Essentials</title>
+  <link rel="stylesheet" href="essentials.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="../../index.html" class="nav-brand">Ascend<span>ant</span></a>
+    <a href="../../index.html#learn" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 12L6 8l4-4"/></svg>
+      All courses
+    </a>
+    <div class="nav-right"><span class="nav-pill pill-arch">Architect · Essentials</span></div>
+  </nav>
+
+  <div class="ess-hero">
+    <div class="ess-hero-inner">
+      <div class="ess-eyebrow">⚡ Essentials · Architect Step 4 of 5</div>
+      <h1>Run a Cardano node</h1>
+      <p>Download the binary, grab the config files, start the node. No theory — just the commands to get it running.</p>
+      <div class="ess-meta-row">
+        <span>⏱ 15 min setup · several hours to sync</span>
+        <span>💾 ~180 GB disk space required</span>
+        <span>🖥 Linux or macOS recommended</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ess-body">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a> › <a href="../../index.html#learn">Courses</a> › Essentials › Run a node
+    </div>
+
+    <div class="ess-summary">
+      <div class="ess-summary-item">⬡ <strong>What you'll have:</strong> A fully syncing Cardano node</div>
+      <div class="ess-summary-item">💻 <strong>Requirements:</strong> 8GB RAM, 180GB SSD, Linux/macOS</div>
+      <div class="ess-summary-item">⏳ <strong>Heads up:</strong> Full sync from scratch takes 12–24 hours</div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">1</div>
+      <div class="step-content">
+        <h3>Download the cardano-node binary</h3>
+        <p>Go to <strong>github.com/IntersectMBO/cardano-node/releases</strong> and download the latest release for your OS. Extract the archive and move the binary to somewhere in your PATH:</p>
+        <code class="cmd"># macOS / Linux
+tar -xzf cardano-node-*.tar.gz
+sudo mv cardano-node /usr/local/bin/
+cardano-node --version</code>
+        <div class="img-placeholder">
+          <div class="img-placeholder-inner">
+            <span class="img-ph-icon">📸</span>
+            <span class="img-ph-title">Screenshot: Terminal — cardano-node --version output</span>
+            <span class="img-ph-sub">Show the version string confirming successful install</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">2</div>
+      <div class="step-content">
+        <h3>Download the configuration files</h3>
+        <p>Create a directory for your node and download the mainnet config files:</p>
+        <code class="cmd">mkdir -p ~/cardano-node/config && cd ~/cardano-node/config
+
+# Download all config files
+curl -O https://book.world.dev.cardano.org/environments/mainnet/config.json
+curl -O https://book.world.dev.cardano.org/environments/mainnet/byron-genesis.json
+curl -O https://book.world.dev.cardano.org/environments/mainnet/shelley-genesis.json
+curl -O https://book.world.dev.cardano.org/environments/mainnet/alonzo-genesis.json
+curl -O https://book.world.dev.cardano.org/environments/mainnet/conway-genesis.json
+curl -O https://book.world.dev.cardano.org/environments/mainnet/topology.json</code>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">3</div>
+      <div class="step-content">
+        <h3>Start the node</h3>
+        <p>From your node directory, run:</p>
+        <code class="cmd">cardano-node run \
+  --topology config/topology.json \
+  --database-path db \
+  --socket-path db/node.socket \
+  --config config/config.json \
+  +RTS -N -RTS</code>
+        <p>The node will start syncing from genesis. You'll see log lines scrolling — that's normal. The sync percentage is shown in the logs. Full sync takes 12–24 hours depending on your hardware and internet speed.</p>
+        <div class="img-placeholder wide">
+          <div class="img-placeholder-inner">
+            <span class="img-ph-icon">📸</span>
+            <span class="img-ph-title">Screenshot: Terminal — cardano-node syncing log output</span>
+            <span class="img-ph-sub">Show the rolling log lines with epoch, slot, and sync percentage visible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">4</div>
+      <div class="step-content">
+        <h3>Check sync progress with cardano-cli</h3>
+        <p>In a second terminal window, set the socket path and query the node's sync status:</p>
+        <code class="cmd">export CARDANO_NODE_SOCKET_PATH=~/cardano-node/db/node.socket
+
+cardano-cli query tip --mainnet</code>
+        <p>You'll see the current slot, block, epoch, and sync percentage. Once <code style="background:#F1F5F9;padding:1px 6px;border-radius:4px;font-size:13px">syncProgress</code> reads <code style="background:#F1F5F9;padding:1px 6px;border-radius:4px;font-size:13px">"100.00"</code>, your node is fully synced.</p>
+        <div class="callout callout-blue">
+          <span class="callout-icon">💡</span>
+          <p><strong>Tip:</strong> To speed up initial sync, download a database snapshot from <strong>csnapshots.io</strong> instead of syncing from genesis. This can reduce sync time to under an hour.</p>
+        </div>
+        <div class="callout callout-green">
+          <span class="callout-icon">✅</span>
+          <p>Your node is running. You now have a direct connection to the Cardano network — no intermediaries. Use it with cardano-cli, submit transactions directly, or build the backend for your own dApp.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-steps">
+      <h3>What's next?</h3>
+      <p>Your node is running. Final Architect step: submit a Catalyst proposal and apply for funding.</p>
+      <div class="next-links">
+        <a href="es-15-catalyst.html" class="btn-next btn-next-primary">Next: Submit a Catalyst proposal →</a>
+        <a href="../../index.html#learn" class="btn-next btn-next-ghost">Back to all courses</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="es-13-query-blockchain.html" class="btn-page-nav">← Query blockchain</a>
+      <a href="es-15-catalyst.html" class="btn-page-nav primary">Next: Catalyst →</a>
+    </div>
+  </div>
+
+  <footer class="advice-footer">
+    <strong>Not financial advice.</strong> This guide is for educational purposes only.
+  </footer>
+</body>
+</html>
