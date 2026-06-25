@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 2: Buying your first ADA — Ascendant</title>
+  <link rel="stylesheet" href="course.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../../index.html" class="nav-brand">Ascend<span>ant</span></a>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 12L6 8l4-4"/></svg>
+      Beginner course
+    </a>
+    <div class="nav-right">
+      <div class="nav-xp">XP: <span class="xp-pill" id="navXp">—</span></div>
+    </div>
+  </nav>
+
+  <div class="course-hero">
+    <div class="course-hero-inner">
+      <div class="course-tag">Module 2 of 4 · Seeker</div>
+      <h1>Buying your first ADA</h1>
+      <p>How to purchase ADA on an exchange safely — including what to look for, what to watch out for, and the key risks every beginner should understand.</p>
+      <div class="course-meta-row">
+        <span>⏱ 8 min</span>
+        <span>🎯 +40 XP on completion</span>
+        <span>📖 No wallet needed yet</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="xp-progress-section">
+    <div class="xp-progress-inner">
+      <span class="xp-label">Course progress</span>
+      <div class="xp-bar-wrap"><div class="xp-bar-fill" id="xpBar" style="width:0%"></div></div>
+      <span class="xp-value" id="xpText">0 / 200 XP</span>
+      <div class="nft-reward-badge">✦ Keymaster NFT</div>
+    </div>
+  </div>
+
+  <div class="module-layout">
+    <div class="stage-breadcrumb">
+      <a href="../../index.html">Home</a> › <a href="index.html">Beginner course</a> › Module 2
+    </div>
+
+    <!-- SECTION 1: What is an exchange? -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#EFF6FF">🏦</span> What is a crypto exchange?</h2>
+      <p>An exchange is a platform where you can buy, sell, and hold crypto using regular money (like £GBP, $USD, or €EUR). Think of it like a bureau de change at an airport — except it's online and open 24/7.</p>
+      <p>When you buy ADA on an exchange, the exchange holds it on your behalf. <strong>You don't actually own it yet</strong> — not in the crypto sense. The exchange holds the keys. This is called <em>custodial</em> ownership, and it's an important distinction we'll cover in Module 3.</p>
+
+      <div class="diagram-box">
+        <svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto">
+          <!-- You -->
+          <rect x="20" y="50" width="100" height="60" rx="10" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1.5"/>
+          <text x="70" y="76" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="13" font-weight="700" fill="#334155">You</text>
+          <text x="70" y="96" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#64748B">£ / $ / €</text>
+
+          <!-- Arrow to exchange -->
+          <text x="148" y="84" text-anchor="middle" font-size="20" fill="#94A3B8">→</text>
+
+          <!-- Exchange -->
+          <rect x="168" y="30" width="224" height="100" rx="12" fill="#EFF6FF" stroke="#93C5FD" stroke-width="2"/>
+          <text x="280" y="62" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="13" font-weight="700" fill="#1D4ED8">EXCHANGE</text>
+          <text x="280" y="80" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#2563EB">(e.g. Coinbase, Kraken)</text>
+          <text x="280" y="100" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#64748B">Holds your ADA on your behalf</text>
+          <text x="280" y="118" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#DC2626">⚠ They hold the keys</text>
+
+          <!-- Arrow to ADA -->
+          <text x="412" y="84" text-anchor="middle" font-size="20" fill="#94A3B8">→</text>
+
+          <!-- ADA -->
+          <rect x="432" y="50" width="108" height="60" rx="10" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5"/>
+          <text x="486" y="76" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="13" font-weight="700" fill="#A16207">₳ ADA</text>
+          <text x="486" y="96" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#A16207">on exchange</text>
+        </svg>
+        <p class="diagram-caption">When you buy on an exchange, your ADA sits in their wallet — not yours. We'll fix that in Module 4.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2: Choosing an exchange -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#F0FDF4">🔍</span> Choosing a reputable exchange</h2>
+      <p>Not all exchanges are equal. Some have been hacked, gone bankrupt, or frozen withdrawals. Here's what to look for:</p>
+
+      <div class="action-steps">
+        <div class="action-steps-title">What to look for in an exchange</div>
+        <div class="action-step">
+          <div class="step-badge">1</div>
+          <div class="step-text"><strong>Regulated &amp; licensed</strong> — look for exchanges that are registered with financial regulators in your country (e.g. FCA in the UK, FinCEN in the US). This provides basic consumer protections.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">2</div>
+          <div class="step-text"><strong>Proof of Reserves</strong> — reputable exchanges publish cryptographic proof that they hold the assets they claim to. Avoid any that don't.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">3</div>
+          <div class="step-text"><strong>Supports ADA withdrawals</strong> — some exchanges only let you trade, not withdraw to your own wallet. Always check before depositing.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">4</div>
+          <div class="step-text"><strong>Two-factor authentication (2FA)</strong> — your account should require a second verification step beyond just a password. Use an authenticator app (not SMS if possible).</div>
+        </div>
+        <div class="action-step">
+          <div class="step-badge">5</div>
+          <div class="step-text"><strong>Clear fee structure</strong> — check trading fees, withdrawal fees, and any deposit fees upfront. Hidden fees add up quickly.</div>
+        </div>
+      </div>
+
+      <div class="callout callout-amber">
+        <span class="callout-icon">⚠️</span>
+        <p><strong>Remember FTX:</strong> In 2022, one of the world's largest exchanges (FTX) collapsed overnight and customers lost billions. This is why we always recommend moving ADA to your own wallet — covered in Modules 3 &amp; 4.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 3: How to buy — mock walkthrough -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#EFF6FF">🛒</span> How the buying process works</h2>
+      <p>Every exchange is slightly different, but the general flow is the same. Here's what to expect:</p>
+
+      <div class="mock-screen">
+        <div class="mock-screen-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <div class="mock-url">exchange.example.com/buy</div>
+        </div>
+        <div class="mock-body">
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:1rem">
+              <div style="font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">Step 1 — Create &amp; verify your account</div>
+              <div style="font-size:13px;color:#334155">You'll need to provide your email, create a password, and verify your identity (passport or driving licence). This is called KYC — Know Your Customer. It's a legal requirement on regulated exchanges.</div>
+            </div>
+            <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:1rem">
+              <div style="font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">Step 2 — Deposit funds</div>
+              <div style="font-size:13px;color:#334155">Transfer money from your bank account. Bank transfer is usually cheapest (often free). Card payments are faster but carry a 1–3% fee.</div>
+            </div>
+            <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:1rem">
+              <div style="font-size:11px;font-weight:700;color:#1D4ED8;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">Step 3 — Buy ADA</div>
+              <div style="font-size:13px;color:#334155">Search for "ADA" or "Cardano", enter the amount in your local currency, review the fees, and confirm. Your ADA will appear in your exchange balance within seconds.</div>
+              <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+                <div style="background:#2563EB;color:white;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:700">Buy ADA ₳</div>
+                <div style="font-size:12px;color:#64748B">Trading fee: ~0.5% · Spread: ~0.1%</div>
+              </div>
+            </div>
+            <div style="background:#F0FDF4;border:1px solid #86EFAC;border-radius:10px;padding:1rem">
+              <div style="font-size:11px;font-weight:700;color:#15803D;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">Step 4 — Enable 2FA immediately</div>
+              <div style="font-size:13px;color:#334155">Before doing anything else, set up two-factor authentication. Go to account security settings → enable authenticator app. Don't skip this.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Understanding fees -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#FFFBEB">💰</span> Understanding the fees</h2>
+      <p>Fees can significantly eat into small purchases. Here's what you'll typically encounter:</p>
+
+      <table class="wallet-table" style="margin:1rem 0">
+        <thead>
+          <tr>
+            <th>Fee type</th>
+            <th>Typical amount</th>
+            <th>When it applies</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Trading fee</td><td>0.1% – 0.5%</td><td>Every time you buy or sell</td></tr>
+          <tr><td>Card deposit fee</td><td>1% – 3%</td><td>Paying by debit/credit card</td></tr>
+          <tr><td>Bank transfer fee</td><td>Usually free</td><td>Standard bank transfer (takes 1–2 days)</td></tr>
+          <tr><td>Withdrawal fee</td><td>0.5 – 2 ADA</td><td>Sending ADA to your own wallet</td></tr>
+          <tr><td>Spread</td><td>0.1% – 1%</td><td>Hidden in the buy/sell price difference</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-blue">
+        <span class="callout-icon">💡</span>
+        <p><strong>Tip:</strong> For larger purchases, bank transfer + a low-fee exchange can save you significantly versus buying with a card on a high-fee platform.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 5: Pros & Cons -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#F0FDF4">⚖️</span> Pros &amp; cons of keeping ADA on an exchange</h2>
+      <p>Buying on an exchange is the starting point — but it comes with trade-offs you should understand before deciding how long to leave your ADA there.</p>
+      <div class="pros-cons">
+        <div class="pros-box">
+          <h4>✓ Advantages</h4>
+          <ul>
+            <li>Easy to buy and sell quickly</li>
+            <li>No wallet setup required</li>
+            <li>Price charts and tools built in</li>
+            <li>Customer support if you're locked out</li>
+            <li>Can set up recurring purchases</li>
+          </ul>
+        </div>
+        <div class="cons-box">
+          <h4>✗ Risks</h4>
+          <ul>
+            <li>Exchange holds your keys — not you</li>
+            <li>Exchanges can be hacked or go bankrupt</li>
+            <li>Withdrawals can be frozen without notice</li>
+            <li>You can't use ADA in dApps or DeFi</li>
+            <li>Can't stake natively (some offer custodial staking)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="quiz-section">
+      <h3>Quick check ✓</h3>
+      <p class="quiz-sub">Answer correctly to earn your 40 XP for this module.</p>
+
+      <div class="quiz-q">
+        <p>1. When you buy ADA on a centralised exchange, who holds the private keys?</p>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> You do — they're stored on your device</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> The Cardano network holds them</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> The exchange holds them on your behalf</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="d"> Nobody holds them — they're decentralised</label>
+        </div>
+      </div>
+
+      <div class="quiz-q">
+        <p>2. Which of these is the best way to reduce fees when depositing to an exchange?</p>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Pay by credit card for maximum speed</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Use a bank transfer — it's usually free or very cheap</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Buy through a third-party app</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="d"> Fees are the same no matter how you pay</label>
+        </div>
+      </div>
+
+      <button class="btn-quiz" id="quizBtn" onclick="submitQuiz()">Check answers</button>
+      <div class="quiz-result" id="quizResult"></div>
+    </div>
+
+    <div class="module-nav">
+      <a href="module-1.html" class="btn-module-nav">← Module 1</a>
+      <a href="module-3.html" class="btn-module-nav primary">Next: Setting up your wallet →</a>
+    </div>
+  </div>
+
+  <footer class="advice-footer">
+    <strong>Not financial advice.</strong> This course is for educational purposes only. Always do your own research before making any financial decisions.
+  </footer>
+  <div class="xp-toast" id="xpToast">🎉 +<span class="xp-amount">40 XP</span> earned!</div>
+
+  <script>
+    const MODULE = 2, MODULE_XP = 40, XP_MAX = 200;
+    const XP_MAP = {1:40,2:40,3:60,4:60};
+    function getTotalXP() { return [1,2,3,4].reduce((s,m)=>s+(localStorage.getItem(`asc_mod${m}_xp`)==='done'?XP_MAP[m]:0),0); }
+    function updateBar() { const xp=getTotalXP(); document.getElementById('xpBar').style.width=(xp/XP_MAX*100)+'%'; document.getElementById('xpText').textContent=xp+' / '+XP_MAX+' XP'; document.getElementById('navXp').textContent=xp+' / '+XP_MAX; }
+    function showToast() { const t=document.getElementById('xpToast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3000); }
+    const ANSWERS={q1:'c',q2:'b'}; let submitted=false;
+    function submitQuiz() {
+      if(submitted) return;
+      const a1=document.querySelector('input[name="q1"]:checked'), a2=document.querySelector('input[name="q2"]:checked');
+      if(!a1||!a2){alert('Please answer both questions.');return;}
+      const pass=a1.value===ANSWERS.q1&&a2.value===ANSWERS.q2;
+      ['q1','q2'].forEach(n=>{
+        const ans=n==='q1'?a1:a2;
+        document.querySelectorAll(`input[name="${n}"]`).forEach(el=>{
+          el.closest('.quiz-option').classList.add(el.value===ANSWERS[n]?'correct':(el.value===ans.value?'wrong':''));
+        });
+      });
+      document.querySelectorAll('input[type=radio]').forEach(el=>el.disabled=true);
+      document.getElementById('quizBtn').disabled=true;
+      const result=document.getElementById('quizResult'); result.classList.add('show');
+      if(pass){
+        result.classList.add('pass'); result.innerHTML='✓ &nbsp;Correct! You\'ve earned <strong>+40 XP</strong> for completing Module 2.';
+        submitted=true;
+        if(localStorage.getItem(`asc_mod${MODULE}_xp`)!=='done'){localStorage.setItem(`asc_mod${MODULE}_xp`,'done');showToast();}
+        updateBar();
+      } else {
+        result.classList.add('fail'); result.innerHTML='✗ &nbsp;Not quite — review the sections above and try again.';
+        setTimeout(()=>{result.classList.remove('show','fail');document.getElementById('quizBtn').disabled=false;document.querySelectorAll('input[type=radio]').forEach(el=>el.disabled=false);document.querySelectorAll('.quiz-option').forEach(el=>el.classList.remove('correct','wrong'));},2500);
+      }
+    }
+    updateBar();
+    if(localStorage.getItem(`asc_mod${MODULE}_xp`)==='done'){document.getElementById('quizBtn').textContent='Already completed ✓';document.getElementById('quizBtn').disabled=true;submitted=true;}
+  </script>
+</body>
+</html>
