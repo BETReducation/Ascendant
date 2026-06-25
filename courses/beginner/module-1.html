@@ -267,10 +267,12 @@
 
       // style options
       document.querySelectorAll('input[name="q1"]').forEach(el => {
-        el.closest('.quiz-option').classList.add(el.value === ANSWERS.q1 ? 'correct' : (el.value === a1.value ? 'wrong' : ''));
+        if (el.value === ANSWERS.q1) el.closest('.quiz-option').classList.add('correct');
+        else if (el.value === a1.value) el.closest('.quiz-option').classList.add('wrong');
       });
       document.querySelectorAll('input[name="q2"]').forEach(el => {
-        el.closest('.quiz-option').classList.add(el.value === ANSWERS.q2 ? 'correct' : (el.value === a2.value ? 'wrong' : ''));
+        if (el.value === ANSWERS.q2) el.closest('.quiz-option').classList.add('correct');
+        else if (el.value === a2.value) el.closest('.quiz-option').classList.add('wrong');
       });
 
       document.querySelectorAll('input[type=radio]').forEach(el => el.disabled = true);
