@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Arena — Ascendant</title>
+  <link rel="stylesheet" href="arena.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-brand">Ascend<span>ant</span></a>
+    <a href="../index.html" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 12L6 8l4-4"/></svg>
+      Back to home
+    </a>
+    <div class="nav-right">
+      <span class="nav-pill">⚔️ The Arena</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="arena-hero">
+    <div class="arena-hero-inner">
+      <div class="arena-eyebrow"><span class="pulse-dot"></span> Live now · Epoch 521</div>
+      <h1>The Arena</h1>
+      <p>Test your Cardano knowledge against the community. One challenge per epoch. One leaderboard. No guessing — understanding wins here.</p>
+    </div>
+  </div>
+
+  <div class="arena-body">
+
+    <!-- CURRENT CHALLENGE -->
+    <div class="challenge-card">
+      <div class="challenge-header">
+        <div>
+          <div class="challenge-label">This epoch's challenge</div>
+          <h2>Predict Cardano's Total Value Locked</h2>
+          <p class="challenge-sub">At the end of Epoch 521, what will the total ADA locked in Cardano DeFi protocols be? Closest prediction wins.</p>
+        </div>
+        <div class="epoch-timer" id="epochTimer">
+          <div class="timer-digits" id="timerDisplay">3d 14h 22m</div>
+          <div class="timer-label">until epoch ends</div>
+        </div>
+      </div>
+
+      <div class="challenge-meta-row">
+        <div class="challenge-stat"><span class="stat-num" id="entryCount">284</span><span class="stat-lbl">entries so far</span></div>
+        <div class="challenge-stat"><span class="stat-num">🏆</span><span class="stat-lbl">NFT badge for top 3</span></div>
+        <div class="challenge-stat"><span class="stat-num">Builder+</span><span class="stat-lbl">tier required</span></div>
+      </div>
+
+      <!-- ENTRY FORM -->
+      <div class="entry-form">
+        <div class="entry-form-label">Your prediction</div>
+        <div class="entry-row">
+          <div class="input-wrap">
+            <span class="input-prefix">₳</span>
+            <input type="number" id="predictionInput" class="prediction-input" placeholder="e.g. 450,000,000" min="0">
+            <span class="input-suffix">ADA</span>
+          </div>
+          <button class="btn-submit" id="submitBtn" onclick="submitEntry()">Submit prediction</button>
+        </div>
+        <div class="entry-hint">Current TVL is approximately ₳ 412,000,000. Entries close when the epoch ends.</div>
+        <div class="entry-success" id="entrySuccess" style="display:none">
+          ✅ Prediction submitted! Check the leaderboard after the epoch ends.
+        </div>
+        <div class="entry-locked" id="entryLocked" style="display:none">
+          🔒 You need Builder tier or above to enter. <a href="../index.html#learn">Complete the Builder courses →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TWO COLUMNS: LEADERBOARD + HOW IT WORKS -->
+    <div class="arena-cols">
+
+      <!-- LEADERBOARD -->
+      <div class="leaderboard-card">
+        <div class="card-header">
+          <h3>Leaderboard</h3>
+          <span class="epoch-badge">Epoch 520 results</span>
+        </div>
+        <div class="leaderboard-list">
+          <div class="lb-row lb-gold">
+            <div class="lb-rank">🥇</div>
+            <div class="lb-info">
+              <div class="lb-name">addr1q…f7k2</div>
+              <div class="lb-detail">Predicted ₳ 398,200,000 · off by 1.2%</div>
+            </div>
+            <div class="lb-badge badge-gold">NFT</div>
+          </div>
+          <div class="lb-row lb-silver">
+            <div class="lb-rank">🥈</div>
+            <div class="lb-info">
+              <div class="lb-name">addr1q…9xt4</div>
+              <div class="lb-detail">Predicted ₳ 401,500,000 · off by 2.0%</div>
+            </div>
+            <div class="lb-badge badge-silver">NFT</div>
+          </div>
+          <div class="lb-row lb-bronze">
+            <div class="lb-rank">🥉</div>
+            <div class="lb-info">
+              <div class="lb-name">addr1q…3mw9</div>
+              <div class="lb-detail">Predicted ₳ 407,000,000 · off by 3.3%</div>
+            </div>
+            <div class="lb-badge badge-bronze">NFT</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank lb-num">4</div>
+            <div class="lb-info">
+              <div class="lb-name">addr1q…77vx</div>
+              <div class="lb-detail">Predicted ₳ 388,000,000 · off by 4.1%</div>
+            </div>
+            <div class="lb-xp">+50 XP</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank lb-num">5</div>
+            <div class="lb-info">
+              <div class="lb-name">addr1q…cc12</div>
+              <div class="lb-detail">Predicted ₳ 435,000,000 · off by 8.9%</div>
+            </div>
+            <div class="lb-xp">+50 XP</div>
+          </div>
+          <div class="lb-row lb-muted">
+            <div class="lb-rank lb-num">·</div>
+            <div class="lb-info">
+              <div class="lb-detail">279 more participants · all earned +10 XP</div>
+            </div>
+          </div>
+        </div>
+        <div class="lb-footer">Results verified on-chain at epoch boundary</div>
+      </div>
+
+      <!-- HOW IT WORKS + PAST CHALLENGES -->
+      <div class="side-col">
+
+        <div class="how-card">
+          <h3>How it works</h3>
+          <div class="how-steps">
+            <div class="how-step">
+              <div class="how-num">1</div>
+              <div class="how-text"><strong>One challenge per epoch</strong> — a new question drops every ~5 days at the epoch boundary.</div>
+            </div>
+            <div class="how-step">
+              <div class="how-num">2</div>
+              <div class="how-text"><strong>Submit your answer</strong> — predictions, multiple choice, or knowledge questions. Builder tier minimum to enter.</div>
+            </div>
+            <div class="how-step">
+              <div class="how-num">3</div>
+              <div class="how-text"><strong>Results at epoch end</strong> — closest answer wins. Top 3 earn an NFT badge. All participants earn XP.</div>
+            </div>
+            <div class="how-step">
+              <div class="how-num">4</div>
+              <div class="how-text"><strong>Leaderboard resets</strong> — each epoch is a fresh start. Seasonal totals tracked separately.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="past-card">
+          <h3>Past challenges</h3>
+          <div class="past-list">
+            <div class="past-row">
+              <div class="past-epoch">Epoch 520</div>
+              <div class="past-q">Predict Cardano TVL</div>
+              <div class="past-result">₳ 393.8M actual</div>
+            </div>
+            <div class="past-row">
+              <div class="past-epoch">Epoch 519</div>
+              <div class="past-q">How many active stake pools?</div>
+              <div class="past-result">2,847 actual</div>
+            </div>
+            <div class="past-row">
+              <div class="past-epoch">Epoch 518</div>
+              <div class="past-q">Predict daily transaction count</div>
+              <div class="past-result">87,412 actual</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="advice-footer">
+    <strong>Not financial advice.</strong> The Arena is for educational and community engagement purposes only. Predictions are not investment guidance.
+  </footer>
+
+  <script>
+    // Countdown timer — counts down to a fixed target (demo: 3d 14h 22m from now)
+    const target = Date.now() + ((3 * 24 + 14) * 3600 + 22 * 60) * 1000;
+    function updateTimer() {
+      const diff = Math.max(0, target - Date.now());
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      document.getElementById('timerDisplay').textContent =
+        d + 'd ' + h + 'h ' + String(m).padStart(2, '0') + 'm';
+      if (diff > 0) setTimeout(updateTimer, 30000);
+    }
+    updateTimer();
+
+    // Entry counter ticks up slowly to feel live
+    let count = 284;
+    setInterval(() => {
+      if (Math.random() < 0.3) {
+        count++;
+        document.getElementById('entryCount').textContent = count;
+      }
+    }, 8000);
+
+    function submitEntry() {
+      const val = document.getElementById('predictionInput').value;
+      if (!val || val <= 0) {
+        document.getElementById('predictionInput').focus();
+        return;
+      }
+      document.getElementById('submitBtn').disabled = true;
+      document.getElementById('submitBtn').textContent = 'Submitted ✓';
+      document.getElementById('entrySuccess').style.display = 'block';
+      count++;
+      document.getElementById('entryCount').textContent = count;
+    }
+  </script>
+
+</body>
+</html>
