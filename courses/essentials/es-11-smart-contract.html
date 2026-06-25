@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deploy your first smart contract — Ascendant Essentials</title>
+  <link rel="stylesheet" href="essentials.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="../../index.html" class="nav-brand">Ascend<span>ant</span></a>
+    <a href="../../index.html#learn" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 12L6 8l4-4"/></svg>
+      All courses
+    </a>
+    <div class="nav-right"><span class="nav-pill pill-arch">Architect · Essentials</span></div>
+  </nav>
+
+  <div class="ess-hero">
+    <div class="ess-hero-inner">
+      <div class="ess-eyebrow">⚡ Essentials · Architect Step 1 of 5</div>
+      <h1>Deploy your first smart contract</h1>
+      <p>Install Aiken, copy the starter template, build it, and submit it to Cardano's testnet. Your first on-chain validator in 15 minutes.</p>
+      <div class="ess-meta-row">
+        <span>⏱ 15 min</span>
+        <span>💻 Terminal / command line required</span>
+        <span>🧪 Testnet only — free, no real ADA needed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ess-body">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a> › <a href="../../index.html#learn">Courses</a> › Essentials › Smart contract
+    </div>
+
+    <div class="ess-summary">
+      <div class="ess-summary-item">🔧 <strong>What you'll have:</strong> A deployed validator on Cardano testnet</div>
+      <div class="ess-summary-item">💻 <strong>Tools needed:</strong> Terminal, Aiken CLI, a text editor</div>
+      <div class="ess-summary-item">🆓 <strong>Cost:</strong> Zero — testnet ADA is free</div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">1</div>
+      <div class="step-content">
+        <h3>Install Aiken</h3>
+        <p>Aiken is Cardano's purpose-built smart contract language — simpler than Haskell/Plutus and much faster to learn. Open your terminal and run:</p>
+        <code class="cmd">curl -sSfL https://install.aiken-lang.org | bash</code>
+        <p>Then restart your terminal and verify it's installed:</p>
+        <code class="cmd">aiken --version</code>
+        <div class="img-placeholder">
+          <div class="img-placeholder-inner">
+            <span class="img-ph-icon">📸</span>
+            <span class="img-ph-title">Screenshot: Terminal showing aiken --version output</span>
+            <span class="img-ph-sub">Show the version number printed after successful install</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">2</div>
+      <div class="step-content">
+        <h3>Create a new Aiken project</h3>
+        <p>Create a new project with:</p>
+        <code class="cmd">aiken new my-first-contract
+cd my-first-contract</code>
+        <p>This creates a project folder with the correct structure. Open it in your text editor (VS Code works great — install the Aiken extension for syntax highlighting).</p>
+        <div class="img-placeholder">
+          <div class="img-placeholder-inner">
+            <span class="img-ph-icon">📸</span>
+            <span class="img-ph-title">Screenshot: VS Code — Aiken project structure</span>
+            <span class="img-ph-sub">Show the file tree with validators/, lib/, and aiken.toml visible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">3</div>
+      <div class="step-content">
+        <h3>Look at the starter validator</h3>
+        <p>Open <code style="background:#F1F5F9;padding:1px 6px;border-radius:4px;font-size:13px">validators/placeholder.ak</code>. You'll see a simple validator that always succeeds:</p>
+        <code class="cmd">validator {
+  fn spend(_datum, _redeemer, _context) {
+    True
+  }
+}</code>
+        <p>This is the "Hello World" of Cardano smart contracts. It validates any transaction that tries to spend from it. In a real contract you'd check conditions — for now, just understanding the structure is enough.</p>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">4</div>
+      <div class="step-content">
+        <h3>Build your contract</h3>
+        <p>In your terminal (inside the project folder), run:</p>
+        <code class="cmd">aiken build</code>
+        <p>If successful, you'll see a <code style="background:#F1F5F9;padding:1px 6px;border-radius:4px;font-size:13px">plutus.json</code> file appear in your project folder. This is your compiled contract — ready to submit to the blockchain.</p>
+        <div class="img-placeholder">
+          <div class="img-placeholder-inner">
+            <span class="img-ph-icon">📸</span>
+            <span class="img-ph-title">Screenshot: Terminal — successful aiken build output</span>
+            <span class="img-ph-sub">Show the build success message and the generated plutus.json file</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">5</div>
+      <div class="step-content">
+        <h3>Get testnet ADA and check your script address</h3>
+        <p>To interact with your contract on testnet, you need testnet ADA (tADA) — it's free. Go to the <strong>Cardano Testnet Faucet</strong> at <strong>docs.cardano.org/cardano-testnet/tools/faucet</strong>, enter your wallet's testnet address, and request some tADA.</p>
+        <p>Your contract's script address (where you'd lock funds to be controlled by your validator) is derived from the <code style="background:#F1F5F9;padding:1px 6px;border-radius:4px;font-size:13px">plutus.json</code> file. You can compute it with the cardano-cli — covered in the full Architect course.</p>
+        <div class="callout callout-green">
+          <span class="callout-icon">✅</span>
+          <p>You've written, built, and understood your first Cardano smart contract. The full Architect course covers deploying, locking funds, and building real validators with proper logic.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-steps">
+      <h3>What's next?</h3>
+      <p>You've deployed your first contract. Next: mint a native token without writing Plutus at all.</p>
+      <div class="next-links">
+        <a href="es-12-mint-token.html" class="btn-next btn-next-primary">Next: Mint a native token →</a>
+        <a href="../../index.html#learn" class="btn-next btn-next-ghost">Back to all courses</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="es-10-governance.html" class="btn-page-nav">← Governance</a>
+      <a href="es-12-mint-token.html" class="btn-page-nav primary">Next: Mint a token →</a>
+    </div>
+  </div>
+
+  <footer class="advice-footer">
+    <strong>Not financial advice.</strong> This guide is for educational purposes only.
+  </footer>
+</body>
+</html>
