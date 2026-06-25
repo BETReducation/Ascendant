@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 1: What is Cardano? — Ascendant</title>
+  <link rel="stylesheet" href="course.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../../index.html" class="nav-brand">Ascend<span>ant</span></a>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 12L6 8l4-4"/></svg>
+      Beginner course
+    </a>
+    <div class="nav-right">
+      <div class="nav-xp">XP: <span class="xp-pill" id="navXp">—</span></div>
+    </div>
+  </nav>
+
+  <div class="course-hero">
+    <div class="course-hero-inner">
+      <div class="course-tag">Module 1 of 4 · Seeker</div>
+      <h1>What is Cardano &amp; ADA?</h1>
+      <p>A plain-English explainer on what Cardano is, why it exists, and what you can actually do with ADA.</p>
+      <div class="course-meta-row">
+        <span>⏱ 6 min</span>
+        <span>🎯 +40 XP on completion</span>
+        <span>📖 No wallet needed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="xp-progress-section">
+    <div class="xp-progress-inner">
+      <span class="xp-label">Course progress</span>
+      <div class="xp-bar-wrap"><div class="xp-bar-fill" id="xpBar" style="width:0%"></div></div>
+      <span class="xp-value" id="xpText">0 / 200 XP</span>
+      <div class="nft-reward-badge">✦ Keymaster NFT</div>
+    </div>
+  </div>
+
+  <div class="module-layout">
+    <div class="stage-breadcrumb">
+      <a href="../../index.html">Home</a> › <a href="index.html">Beginner course</a> › Module 1
+    </div>
+
+    <!-- SECTION 1: What is a blockchain? -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#EFF6FF">🔗</span> First, what is a blockchain?</h2>
+      <p>A blockchain is a shared record book — like a spreadsheet that thousands of computers all hold a copy of simultaneously. Nobody owns it, nobody can secretly edit it, and every transaction is permanently visible.</p>
+      <p>Think of it like this: when you send money through a bank, the bank updates its private database. With a blockchain, that update happens across thousands of independent computers at once — making it nearly impossible to fake or reverse.</p>
+
+      <div class="diagram-box">
+        <svg viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto">
+          <!-- Traditional bank -->
+          <rect x="20" y="40" width="130" height="80" rx="10" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1.5"/>
+          <text x="85" y="70" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" font-weight="700" fill="#334155">TRADITIONAL</text>
+          <text x="85" y="86" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" font-weight="700" fill="#334155">BANK</text>
+          <text x="85" y="106" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#64748B">One private database</text>
+          <!-- arrow -->
+          <text x="175" y="85" text-anchor="middle" font-size="22" fill="#94A3B8">→</text>
+          <!-- blockchain -->
+          <g transform="translate(210,0)">
+            <rect x="0" y="50" width="70" height="60" rx="8" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+            <text x="35" y="76" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" font-weight="700" fill="#1D4ED8">Node</text>
+            <text x="35" y="91" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#2563EB">copy #1</text>
+            <rect x="90" y="20" width="70" height="60" rx="8" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+            <text x="125" y="46" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" font-weight="700" fill="#1D4ED8">Node</text>
+            <text x="125" y="61" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#2563EB">copy #2</text>
+            <rect x="180" y="50" width="70" height="60" rx="8" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+            <text x="215" y="76" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" font-weight="700" fill="#1D4ED8">Node</text>
+            <text x="215" y="91" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#2563EB">copy #3</text>
+            <rect x="90" y="90" width="70" height="60" rx="8" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+            <text x="125" y="116" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" font-weight="700" fill="#1D4ED8">Node</text>
+            <text x="125" y="131" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#2563EB">copy #4</text>
+            <!-- connecting lines -->
+            <line x1="70" y1="80" x2="90" y2="50" stroke="#BFDBFE" stroke-width="1.5"/>
+            <line x1="70" y1="80" x2="90" y2="120" stroke="#BFDBFE" stroke-width="1.5"/>
+            <line x1="160" y1="50" x2="180" y2="80" stroke="#BFDBFE" stroke-width="1.5"/>
+            <line x1="160" y1="120" x2="180" y2="80" stroke="#BFDBFE" stroke-width="1.5"/>
+            <line x1="125" y1="80" x2="125" y2="90" stroke="#BFDBFE" stroke-width="1.5"/>
+          </g>
+          <text x="360" y="158" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#64748B">Thousands of independent copies</text>
+        </svg>
+        <p class="diagram-caption">Banks use one private ledger. Blockchains use thousands of copies — all agreeing simultaneously.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2: What is Cardano? -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#EFF6FF">⬡</span> So what is Cardano?</h2>
+      <p>Cardano is a blockchain platform — think of it as the infrastructure layer that other things are built on top of. It was founded in 2015 by Charles Hoskinson (one of the original co-founders of Ethereum) and launched in 2017.</p>
+      <p>What makes Cardano different is <strong>how it was built</strong>: every design decision is backed by peer-reviewed academic research before being implemented. It's the only top-10 blockchain with this approach — which is why it has never been hacked.</p>
+
+      <div class="callout callout-blue">
+        <span class="callout-icon">💡</span>
+        <p><strong>Peer-reviewed means:</strong> independent academics check the maths and logic before anything goes live. This is the same standard used for pharmaceutical trials and scientific papers — not common in crypto.</p>
+      </div>
+
+      <p>Cardano is also <strong>proof-of-stake</strong> — meaning it doesn't need energy-hungry mining rigs. Validating transactions uses roughly 0.01% of Bitcoin's energy, while still being just as secure.</p>
+    </div>
+
+    <!-- SECTION 3: What is ADA? -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#FFFBEB">₳</span> What is ADA?</h2>
+      <p>ADA is the native currency of the Cardano blockchain — named after Ada Lovelace, the 19th-century mathematician considered the world's first programmer.</p>
+
+      <div class="diagram-box">
+        <svg viewBox="0 0 540 180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto">
+          <defs>
+            <linearGradient id="adaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#2563EB"/>
+              <stop offset="100%" style="stop-color:#7C3AED"/>
+            </linearGradient>
+          </defs>
+          <!-- ADA coin -->
+          <circle cx="90" cy="90" r="58" fill="url(#adaGrad)" opacity="0.12"/>
+          <circle cx="90" cy="90" r="46" fill="none" stroke="url(#adaGrad)" stroke-width="2"/>
+          <text x="90" y="82" text-anchor="middle" font-size="26" fill="#2563EB">₳</text>
+          <text x="90" y="102" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" font-weight="700" fill="#1E40AF">ADA</text>
+
+          <!-- uses -->
+          <g font-family="Plus Jakarta Sans,sans-serif" font-size="12">
+            <rect x="165" y="18" width="160" height="36" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+            <text x="245" y="32" text-anchor="middle" font-size="14">💸</text>
+            <text x="245" y="48" text-anchor="middle" font-weight="600" fill="#1D4ED8">Pay transaction fees</text>
+            <line x1="148" y1="62" x2="165" y2="36" stroke="#BFDBFE" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+            <rect x="165" y="72" width="160" height="36" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5"/>
+            <text x="245" y="86" text-anchor="middle" font-size="14">🏦</text>
+            <text x="245" y="102" text-anchor="middle" font-weight="600" fill="#15803D">Stake &amp; earn rewards</text>
+            <line x1="148" y1="90" x2="165" y2="90" stroke="#86EFAC" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+            <rect x="165" y="126" width="160" height="36" rx="8" fill="#FAF5FF" stroke="#C4B5FD" stroke-width="1.5"/>
+            <text x="245" y="140" text-anchor="middle" font-size="14">🗳️</text>
+            <text x="245" y="156" text-anchor="middle" font-weight="600" fill="#6D28D9">Vote on governance</text>
+            <line x1="148" y1="118" x2="165" y2="144" stroke="#C4B5FD" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+            <rect x="345" y="45" width="175" height="36" rx="8" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5"/>
+            <text x="432" y="59" text-anchor="middle" font-size="14">🔧</text>
+            <text x="432" y="75" text-anchor="middle" font-weight="600" fill="#A16207">Use dApps &amp; DeFi</text>
+            <line x1="325" y1="72" x2="345" y2="63" stroke="#FDE68A" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+            <rect x="345" y="99" width="175" height="36" rx="8" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+            <text x="432" y="113" text-anchor="middle" font-size="14">🖼️</text>
+            <text x="432" y="129" text-anchor="middle" font-weight="600" fill="#DC2626">Buy &amp; sell NFTs</text>
+            <line x1="325" y1="108" x2="345" y2="117" stroke="#FECACA" stroke-width="1.5" stroke-dasharray="4,3"/>
+          </g>
+        </svg>
+        <p class="diagram-caption">ADA has multiple uses within the Cardano ecosystem — it's the fuel that makes everything run.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Pros & Cons -->
+    <div class="module-section">
+      <h2><span class="section-icon" style="background:#F0FDF4">⚖️</span> Pros &amp; cons of Cardano</h2>
+      <p>No blockchain is perfect. Here's an honest look at what makes Cardano stand out — and where it falls short:</p>
+      <div class="pros-cons">
+        <div class="pros-box">
+          <h4>✓ Strengths</h4>
+          <ul>
+            <li>Peer-reviewed, academic-grade security</li>
+            <li>Never been hacked since 2017</li>
+            <li>Energy-efficient proof-of-stake</li>
+            <li>Stake without locking up your ADA</li>
+            <li>Strong long-term roadmap (Voltaire governance)</li>
+            <li>Large, active global community</li>
+          </ul>
+        </div>
+        <div class="cons-box">
+          <h4>✗ Limitations</h4>
+          <ul>
+            <li>Slower feature rollout (research-first approach)</li>
+            <li>Smaller DeFi ecosystem than Ethereum</li>
+            <li>Price can be volatile like any crypto asset</li>
+            <li>Less name recognition than Bitcoin / Ethereum</li>
+            <li>Not all exchanges support ADA</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout callout-amber">
+        <span class="callout-icon">⚠️</span>
+        <p><strong>Important:</strong> The price of ADA goes up and down significantly. Only invest what you can afford to lose. This course is here to help you understand and use the technology — not to predict prices.</p>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="quiz-section" id="quizSection">
+      <h3>Quick check ✓</h3>
+      <p class="quiz-sub">Answer both questions correctly to earn your 40 XP for this module.</p>
+
+      <div class="quiz-q" id="q1">
+        <p>1. What makes Cardano's development approach unique compared to other blockchains?</p>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> It was the first blockchain ever created</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> All protocol decisions are backed by peer-reviewed academic research</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> It uses the most energy-intensive mining process</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="d"> It's controlled by a central company</label>
+        </div>
+      </div>
+
+      <div class="quiz-q" id="q2">
+        <p>2. Which of these is something you can do with ADA?</p>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Use it to pay for physical goods at any shop</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Stake it to earn rewards while keeping it in your own wallet</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Use it to pay taxes directly to your government</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="d"> Convert it automatically to any fiat currency</label>
+        </div>
+      </div>
+
+      <button class="btn-quiz" id="quizBtn" onclick="submitQuiz()">Check answers</button>
+      <div class="quiz-result" id="quizResult"></div>
+    </div>
+
+    <!-- MODULE NAV -->
+    <div class="module-nav">
+      <span></span>
+      <a href="module-2.html" class="btn-module-nav primary" id="nextBtn">Next: Buying your first ADA →</a>
+    </div>
+  </div>
+
+  <!-- STICKY FOOTER -->
+  <footer class="advice-footer">
+    <strong>Not financial advice.</strong> This course is for educational purposes only. Always do your own research before making any financial decisions.
+  </footer>
+
+  <!-- XP TOAST -->
+  <div class="xp-toast" id="xpToast">🎉 +<span class="xp-amount">40 XP</span> earned!</div>
+
+  <script>
+    const MODULE = 1;
+    const MODULE_XP = 40;
+    const XP_MAX = 200;
+    const XP_MAP = {1:40,2:40,3:60,4:60};
+
+    function getTotalXP() {
+      return [1,2,3,4].reduce((s,m) => s + (localStorage.getItem(`asc_mod${m}_xp`) === 'done' ? XP_MAP[m] : 0), 0);
+    }
+
+    function updateBar() {
+      const xp = getTotalXP();
+      document.getElementById('xpBar').style.width = (xp/XP_MAX*100)+'%';
+      document.getElementById('xpText').textContent = xp+' / '+XP_MAX+' XP';
+      document.getElementById('navXp').textContent = xp+' / '+XP_MAX;
+    }
+
+    function showToast() {
+      const t = document.getElementById('xpToast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    const ANSWERS = { q1: 'b', q2: 'b' };
+    let submitted = false;
+
+    function submitQuiz() {
+      if (submitted) return;
+      const a1 = document.querySelector('input[name="q1"]:checked');
+      const a2 = document.querySelector('input[name="q2"]:checked');
+      if (!a1 || !a2) { alert('Please answer both questions.'); return; }
+
+      const pass = a1.value === ANSWERS.q1 && a2.value === ANSWERS.q2;
+
+      // style options
+      document.querySelectorAll('input[name="q1"]').forEach(el => {
+        el.closest('.quiz-option').classList.add(el.value === ANSWERS.q1 ? 'correct' : (el.value === a1.value ? 'wrong' : ''));
+      });
+      document.querySelectorAll('input[name="q2"]').forEach(el => {
+        el.closest('.quiz-option').classList.add(el.value === ANSWERS.q2 ? 'correct' : (el.value === a2.value ? 'wrong' : ''));
+      });
+
+      document.querySelectorAll('input[type=radio]').forEach(el => el.disabled = true);
+      document.getElementById('quizBtn').disabled = true;
+
+      const result = document.getElementById('quizResult');
+      result.classList.add('show');
+
+      if (pass) {
+        result.classList.add('pass');
+        result.innerHTML = '✓ &nbsp;Correct! You\'ve earned <strong>+40 XP</strong> for completing Module 1.';
+        submitted = true;
+        if (localStorage.getItem(`asc_mod${MODULE}_xp`) !== 'done') {
+          localStorage.setItem(`asc_mod${MODULE}_xp`, 'done');
+          showToast();
+        }
+        updateBar();
+      } else {
+        result.classList.add('fail');
+        result.innerHTML = '✗ &nbsp;Not quite — review the sections above and try again.';
+        setTimeout(() => {
+          result.classList.remove('show');
+          document.getElementById('quizBtn').disabled = false;
+          document.querySelectorAll('input[type=radio]').forEach(el => el.disabled = false);
+          document.querySelectorAll('.quiz-option').forEach(el => el.classList.remove('correct','wrong'));
+        }, 2500);
+      }
+    }
+
+    // on load
+    updateBar();
+    if (localStorage.getItem(`asc_mod${MODULE}_xp`) === 'done') {
+      document.getElementById('quizBtn').textContent = 'Already completed ✓';
+      document.getElementById('quizBtn').disabled = true;
+      submitted = true;
+    }
+  </script>
+</body>
+</html>
