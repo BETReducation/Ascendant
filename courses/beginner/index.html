@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beginner Course — Ascendant</title>
+  <link rel="stylesheet" href="course.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="../../index.html" class="nav-brand">Ascend<span>ant</span></a>
+    <a href="../../index.html#learn" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M10 12L6 8l4-4"/>
+      </svg>
+      All courses
+    </a>
+    <div class="nav-right">
+      <div class="nav-xp">
+        Course XP: <span class="xp-pill" id="navXp">0 / 200</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="course-hero">
+    <div class="course-hero-inner">
+      <div class="course-tag">⬡ Seeker · Beginner</div>
+      <h1>Getting started on Cardano</h1>
+      <p>From zero to self-custody in four practical steps. No prior crypto experience needed — just follow along.</p>
+      <div class="course-meta-row">
+        <span>⏱ ~35 min total</span>
+        <span>📚 4 modules</span>
+        <span>✦ Keymaster NFT on completion</span>
+        <span>🆓 Completely free</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- XP PROGRESS -->
+  <div class="xp-progress-section">
+    <div class="xp-progress-inner">
+      <span class="xp-label">Your progress</span>
+      <div class="xp-bar-wrap">
+        <div class="xp-bar-fill" id="xpBar" style="width:0%"></div>
+      </div>
+      <span class="xp-value" id="xpText">0 / 200 XP</span>
+      <div class="nft-reward-badge">✦ Keymaster NFT</div>
+    </div>
+  </div>
+
+  <!-- MODULES -->
+  <div class="overview-section">
+    <h2>Course modules</h2>
+    <div class="modules-list">
+
+      <a class="module-card active" href="module-1.html" id="card-1">
+        <div class="module-num" id="num-1">1</div>
+        <div class="module-info">
+          <h3>What is Cardano &amp; ADA?</h3>
+          <p>Understand what Cardano is, why it was built, and what ADA is used for — in plain English.</p>
+          <div class="module-chips">
+            <span class="chip chip-time">⏱ 6 min</span>
+            <span class="chip chip-xp">+40 XP</span>
+          </div>
+        </div>
+        <div class="module-arrow">→</div>
+      </a>
+
+      <a class="module-card" href="module-2.html" id="card-2">
+        <div class="module-num" id="num-2">2</div>
+        <div class="module-info">
+          <h3>Buying your first ADA</h3>
+          <p>How to purchase ADA on an exchange — what to look for, what to avoid, and the key risks to know.</p>
+          <div class="module-chips">
+            <span class="chip chip-time">⏱ 8 min</span>
+            <span class="chip chip-xp">+40 XP</span>
+          </div>
+        </div>
+        <div class="module-arrow">→</div>
+      </a>
+
+      <a class="module-card" href="module-3.html" id="card-3">
+        <div class="module-num" id="num-3">3</div>
+        <div class="module-info">
+          <h3>Setting up your wallet</h3>
+          <p>Install a non-custodial Cardano wallet, secure your seed phrase, and understand what self-custody really means.</p>
+          <div class="module-chips">
+            <span class="chip chip-time">⏱ 10 min</span>
+            <span class="chip chip-xp">+60 XP</span>
+          </div>
+        </div>
+        <div class="module-arrow">→</div>
+      </a>
+
+      <a class="module-card" href="module-4.html" id="card-4">
+        <div class="module-num" id="num-4">4</div>
+        <div class="module-info">
+          <h3>Moving ADA off an exchange</h3>
+          <p>Send your ADA from an exchange to your own wallet — step by step, with every safety check explained.</p>
+          <div class="module-chips">
+            <span class="chip chip-time">⏱ 8 min</span>
+            <span class="chip chip-xp">+60 XP</span>
+            <span class="chip chip-nft">✦ Keymaster NFT</span>
+          </div>
+        </div>
+        <div class="module-arrow">→</div>
+      </a>
+
+    </div>
+
+    <!-- NFT reward info -->
+    <div class="callout callout-amber" style="margin-top:2rem">
+      <span class="callout-icon">✦</span>
+      <p><strong>Keymaster NFT:</strong> Complete all four modules and pass the quiz in each one to earn your Keymaster NFT on-chain. This credential proves you understand self-custody — and unlocks the next tier of courses.</p>
+    </div>
+  </div>
+
+  <!-- STICKY FOOTER -->
+  <footer class="advice-footer">
+    <strong>Not financial advice.</strong> This course is for educational purposes only. Always do your own research before making any financial decisions.
+  </footer>
+
+  <script>
+    const XP_MAX = 200;
+    const MODULES = [1, 2, 3, 4];
+    const XP_MAP = { 1: 40, 2: 40, 3: 60, 4: 60 };
+
+    function getTotalXP() {
+      return MODULES.reduce((sum, m) => {
+        return sum + (localStorage.getItem(`asc_mod${m}_xp`) === 'done' ? XP_MAP[m] : 0);
+      }, 0);
+    }
+
+    function render() {
+      const xp = getTotalXP();
+      document.getElementById('xpBar').style.width = (xp / XP_MAX * 100) + '%';
+      document.getElementById('xpText').textContent = xp + ' / ' + XP_MAX + ' XP';
+      document.getElementById('navXp').textContent = xp + ' / ' + XP_MAX;
+
+      MODULES.forEach(m => {
+        const done = localStorage.getItem(`asc_mod${m}_xp`) === 'done';
+        const card = document.getElementById('card-' + m);
+        const num = document.getElementById('num-' + m);
+        if (done) {
+          card.classList.add('completed');
+          num.textContent = '✓';
+          const chips = card.querySelector('.module-chips');
+          if (!chips.querySelector('.chip-done')) {
+            const d = document.createElement('span');
+            d.className = 'chip chip-done';
+            d.textContent = 'Completed';
+            chips.appendChild(d);
+          }
+        }
+      });
+    }
+
+    render();
+  </script>
+
+</body>
+</html>
