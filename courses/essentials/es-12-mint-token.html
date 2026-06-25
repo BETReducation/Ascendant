@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mint a native token — Ascendant Essentials</title>
+  <link rel="stylesheet" href="essentials.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="../../index.html" class="nav-brand">Ascend<span>ant</span></a>
+    <a href="../../index.html#learn" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 12L6 8l4-4"/></svg>
+      All courses
+    </a>
+    <div class="nav-right"><span class="nav-pill pill-arch">Architect · Essentials</span></div>
+  </nav>
+
+  <div class="ess-hero">
+    <div class="ess-hero-inner">
+      <div class="ess-eyebrow">⚡ Essentials · Architect Step 2 of 5</div>
+      <h1>Mint a native token</h1>
+      <p>Create your own token on Cardano — no smart contract required. Define a minting policy, run the command, check your wallet.</p>
+      <div class="ess-meta-row">
+        <span>⏱ 10 min</span>
+        <span>💻 cardano-cli required</span>
+        <span>🧪 Works on testnet — free</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ess-body">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a> › <a href="../../index.html#learn">Courses</a> › Essentials › Mint a token
+    </div>
+
+    <div class="ess-summary">
+      <div class="ess-summary-item">🪙 <strong>What you'll have:</strong> Your own token in your wallet</div>
+      <div class="ess-summary-item">🔧 <strong>Tools needed:</strong> cardano-cli, a running node or Blockfrost</div>
+      <div class="ess-summary-item">💡 <strong>No Plutus needed:</strong> Native tokens use simple scripts</div>
+    </div>
+
+    <div class="callout callout-blue">
+      <span class="callout-icon">💡</span>
+      <p><strong>Native tokens on Cardano</strong> are first-class citizens of the protocol — not smart contracts. You can mint them using a simple policy script and the cardano-cli. This is far simpler than minting ERC-20 tokens on Ethereum.</p>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">1</div>
+      <div class="step-content">
+        <h3>Install cardano-cli</h3>
+        <p>If you haven't already, install cardano-cli from the official Cardano releases page on GitHub: <strong>github.com/IntersectMBO/cardano-node/releases</strong>. Download the binary for your OS and add it to your PATH. Verify with:</p>
+        <code class="cmd">cardano-cli --version</code>
+        <div class="img-placeholder">
+          <div class="img-placeholder-inner">
+            <span class="img-ph-icon">📸</span>
+            <span class="img-ph-title">Screenshot: Terminal — cardano-cli version output</span>
+            <span class="img-ph-sub">Show the version string after successful install</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">2</div>
+      <div class="step-content">
+        <h3>Generate a signing key pair</h3>
+        <p>You need a key pair to sign the minting transaction. Generate one with:</p>
+        <code class="cmd">cardano-cli address key-gen \
+  --verification-key-file mint.vkey \
+  --signing-key-file mint.skey</code>
+        <p>Then get the key hash (you'll need this for the policy):</p>
+        <code class="cmd">cardano-cli address key-hash \
+  --payment-verification-key-file mint.vkey</code>
+        <p>Copy the hash output — you'll use it in the next step.</p>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">3</div>
+      <div class="step-content">
+        <h3>Write your minting policy</h3>
+        <p>Create a file called <code style="background:#F1F5F9;padding:1px 6px;border-radius:4px;font-size:13px">policy.json</code> with this content (replace YOUR_KEY_HASH with the hash from step 2):</p>
+        <code class="cmd">{
+  "type": "sig",
+  "keyHash": "YOUR_KEY_HASH"
+}</code>
+        <p>This is the simplest possible policy — only the holder of your signing key can mint tokens under this policy. Then get your policy ID:</p>
+        <code class="cmd">cardano-cli transaction policyid \
+  --script-file policy.json</code>
+      </div>
+    </div>
+
+    <div class="ess-step">
+      <div class="step-num arch">4</div>
+      <div class="step-content">
+        <h3>Build and submit the minting transaction</h3>
+        <p>Build a transaction that mints your token. You'll need a UTXO to spend (get testnet ADA from the faucet first). Replace the placeholders with your values:</p>
+        <code class="cmd">cardano-cli transaction build \
+  --testnet-magic 1 \
+  --tx-in YOUR_UTXO_TXHASH#0 \
+  --tx-out YOUR_ADDRESS+"2000000 + 1000 POLICY_ID.MYTOKEN" \
+  --mint="1000 POLICY_ID.MYTOKEN" \
+  --mint-script-file policy.json \
+  --change-address YOUR_ADDRESS \
+  --out-file mint.tx
+
+cardano-cli transaction sign \
+  --tx-file mint.tx \
+  --signing-key-file mint.skey \
+  --testnet-magic 1 \
+  --out-file mint.signed
+
+cardano-cli transaction submit \
+  --testnet-magic 1 \
+  --tx-file mint.signed</code>
+        <div class="callout callout-green">
+          <span class="callout-icon">✅</span>
+          <p>1,000 MYTOKEN are now in your wallet. Check them on the Cardano testnet explorer at <strong>preprod.cardanoscan.io</strong>. The full Architect course covers metadata, NFT minting policies, and burn logic.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-steps">
+      <h3>What's next?</h3>
+      <p>You've minted a token. Next: query the live blockchain with just a browser and an API key.</p>
+      <div class="next-links">
+        <a href="es-13-query-blockchain.html" class="btn-next btn-next-primary">Next: Query the blockchain →</a>
+        <a href="../../index.html#learn" class="btn-next btn-next-ghost">Back to all courses</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="es-11-smart-contract.html" class="btn-page-nav">← Smart contract</a>
+      <a href="es-13-query-blockchain.html" class="btn-page-nav primary">Next: Query blockchain →</a>
+    </div>
+  </div>
+
+  <footer class="advice-footer">
+    <strong>Not financial advice.</strong> This guide is for educational purposes only.
+  </footer>
+</body>
+</html>
