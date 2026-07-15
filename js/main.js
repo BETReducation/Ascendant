@@ -605,6 +605,31 @@ connectBtn.addEventListener('click', openWalletModal);
 
 /* ═══ END WALLET CONNECTION ═══ */
 
+/* Intro overlay — animated Cardano logo, click anywhere to enter */
+const introOverlay = document.getElementById('introOverlay');
+if (introOverlay) {
+  const dismissIntro = () => {
+    if (introOverlay.classList.contains('dismissed')) return;
+    introOverlay.classList.add('dismissed');
+    introOverlay.addEventListener('transitionend', () => introOverlay.remove(), { once: true });
+  };
+  introOverlay.addEventListener('click', dismissIntro);
+  introOverlay.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+      e.preventDefault();
+      dismissIntro();
+    }
+  });
+}
+
+/* Parallax on hero background mark */
+const mark = document.getElementById('parallaxMark');
+window.addEventListener('scroll', () => {
+  if (mark) {
+    mark.style.transform = `translate(-50%, calc(-50% + ${window.scrollY * 0.3}px))`;
+  }
+}, { passive: true });
+
 /* Fade-up on scroll via IntersectionObserver */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
