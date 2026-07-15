@@ -605,14 +605,6 @@ connectBtn.addEventListener('click', openWalletModal);
 
 /* ═══ END WALLET CONNECTION ═══ */
 
-/* Parallax on hero background mark */
-const mark = document.getElementById('parallaxMark');
-window.addEventListener('scroll', () => {
-  if (mark) {
-    mark.style.transform = `translate(-50%, calc(-50% + ${window.scrollY * 0.3}px))`;
-  }
-}, { passive: true });
-
 /* Fade-up on scroll via IntersectionObserver */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
